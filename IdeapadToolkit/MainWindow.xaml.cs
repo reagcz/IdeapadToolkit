@@ -41,7 +41,10 @@ namespace IdeapadToolkit
             else
             {
                 var page = (args.InvokedItemContainer.Tag as Type);
-                _navigationService.Navigate(page);
+                if (page != null)
+                {
+                    _navigationService.Navigate(page);
+                }
             }
         }
     }

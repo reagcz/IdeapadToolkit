@@ -6,7 +6,6 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Documents;
-using Vanara.PInvoke;
 
 namespace IdeapadToolkit.Services
 {
@@ -16,7 +15,7 @@ namespace IdeapadToolkit.Services
         private static readonly string ScopeName = "FBSWIF";
         private static readonly int ScopeAttribute = 7;
 
-        private bool SetPrivilege(bool enable)
+        private static bool SetPrivilege(bool enable)
         {
             try
             {
@@ -38,26 +37,26 @@ namespace IdeapadToolkit.Services
                     return false;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
             return true;
         }
-        public int GetFlipToBootStatus()
+        public bool GetFlipToBootStatus()
         {
-            if (!SetPrivilege(true)) return -1;
+            if (!SetPrivilege(true)) throw new Exception();
             int dataFromUefi = -1;
             try
             {
-                LenovoFlipToBootSwInterface structure = new LenovoFlipToBootSwInterface()
+                LenovoFlipToBootSwInterface structure = new()
                 {
                     FlipToBootEn = 0,
                     Reserved1 = 0,
                     Reserved2 = 0,
                     Reserved3 = 0
                 };
-                
+
                 var res = Win32.GetFirmwareEnvironmentVariableExW(ScopeName, Guid, ref structure, Marshal.SizeOf<LenovoFlipToBootSwInterface>(), IntPtr.Zero);
                 if (res != 0)
                 {
@@ -69,14 +68,19 @@ namespace IdeapadToolkit.Services
                     dataFromUefi = lastWin32Error * -1;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
             finally
             {
                 _ = SetPrivilege(false);
             }
-            return dataFromUefi;
+            return dataFromUefi switch
+            {
+                0 => false,
+                1 => true,
+                _ => throw new Exception()
+            };
         }
 
         public int SetFlipToBootStatus(bool newStatus)
@@ -85,7 +89,7 @@ namespace IdeapadToolkit.Services
             int num1 = -1;
             try
             {
-                LenovoFlipToBootSwInterface structure = new LenovoFlipToBootSwInterface()
+                LenovoFlipToBootSwInterface structure = new()
                 {
                     FlipToBootEn = newStatus ? (byte)1 : (byte)0,
                     Reserved1 = 0,
@@ -96,7 +100,7 @@ namespace IdeapadToolkit.Services
                 var res = (Win32.SetFirmwareEnvironmentVariableExW(ScopeName, Guid, ref structure, Marshal.SizeOf<LenovoFlipToBootSwInterface>(), ScopeAttribute));
                 if (res != 0) return 0;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
             finally { _ = SetPrivilege(false); }

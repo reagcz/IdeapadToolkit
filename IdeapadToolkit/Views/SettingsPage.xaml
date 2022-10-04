@@ -11,7 +11,9 @@
     d:DesignWidth="800"
     mc:Ignorable="d">
 
-    <Grid>
-        <TextBlock Text="SettingsPage" />
+    <Grid Margin="16">
+        <ui:SimpleStackPanel>
+            <ui:ToggleSwitch ui:ControlHelper.Header="Run On Startup" IsOn="{Binding IsRunOnStartupEnabled}" />
+        </ui:SimpleStackPanel>
     </Grid>
 </ui:Page>

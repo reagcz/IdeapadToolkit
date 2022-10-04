@@ -12,20 +12,6 @@
                 <ui:ThemeResources />
                 <ui:XamlControlsResources />
             </ResourceDictionary.MergedDictionaries>
-            <tb:TaskbarIcon
-                x:Key="NotifyIcon"
-                IconSource="\Resources\test.ico"
-                ToolTipText="Ideapad Toolkit"
-                Visibility="Visible">
-                <FrameworkElement.ContextMenu>
-                    <ContextMenu>
-                        <MenuItem
-                            Name="MenuItemExit"
-                            Click="MenuItemExit_Click"
-                            Header="Exit" />
-                    </ContextMenu>
-                </FrameworkElement.ContextMenu>
-            </tb:TaskbarIcon>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

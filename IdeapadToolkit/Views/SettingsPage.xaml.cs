@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IdeapadToolkit.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,10 @@ namespace IdeapadToolkit.Views
     /// </summary>
     public partial class SettingsPage : ModernWpf.Controls.Page
     {
-        public SettingsPage()
+        public SettingsPage(SettingsViewModel vm)
         {
             InitializeComponent();
+            this.DataContext = vm;
         }
     }
 }

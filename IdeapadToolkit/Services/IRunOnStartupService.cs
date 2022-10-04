@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace IdeapadToolkit.Services
 {
-    public interface IUEFISettingsService
+    public interface IRunOnStartupService
     {
-        public bool GetFlipToBootStatus();
-        public int SetFlipToBootStatus(bool newStatus);
+        bool IsRunOnStartupEnabled();
+        void ToggleRunOnStartup();
     }
 }

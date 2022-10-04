@@ -47,5 +47,11 @@ namespace IdeapadToolkit.Views
         {
             _vm.Refresh();
         }
+
+        public EventHandler TrayIconClicked;
+        private void TrayIcon_TrayMouseDoubleClick(object sender, RoutedEventArgs e)
+        {
+            TrayIconClicked?.Invoke(this, e);
+        }
     }
 }

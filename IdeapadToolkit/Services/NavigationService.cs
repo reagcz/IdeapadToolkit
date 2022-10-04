@@ -27,25 +27,16 @@ namespace IdeapadToolkit.Services
         }
         public void GoBack()
         {
-            if (NavFrame != null)
-            {
-                NavFrame.GoBack();
-            }
+            NavFrame?.GoBack();
         }
 
-        public void Navigate<TElement>(object args) where TElement : UIElement
+        public void Navigate<TElement>(object? args) where TElement : UIElement
         {
-            if (NavFrame != null)
-            {
-                NavFrame.Navigate(this._container.GetInstance<TElement>(), args);
-            }
+            NavFrame?.Navigate(this._container.GetInstance<TElement>(), args);
         }
-        public void Navigate(Type page, object args)
+        public void Navigate(Type page, object? args)
         {
-            if (NavFrame != null)
-            {
-                NavFrame.Navigate(this._container.GetInstance(page), args);
-            }
+            NavFrame?.Navigate(this._container.GetInstance(page), args);
         }
 
         private readonly Container _container;

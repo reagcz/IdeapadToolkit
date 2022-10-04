@@ -63,7 +63,7 @@
                 <mwpf:NavigationView.MenuItems>
                     <mwpf:NavigationViewItem Content="Home" Tag="{x:Type views:MainPage}">
                         <mwpf:NavigationViewItem.Icon>
-                            <mwpf:SymbolIcon Symbol="DisableUpdates" />
+                            <mwpf:SymbolIcon Symbol="Home" />
                         </mwpf:NavigationViewItem.Icon>
                     </mwpf:NavigationViewItem>
                 </mwpf:NavigationView.MenuItems>

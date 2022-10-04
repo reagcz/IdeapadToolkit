@@ -36,6 +36,29 @@ namespace IdeapadToolkit.Services
         [DllImport("PowerBattery.dll", EntryPoint = "#139", CallingConvention = CallingConvention.Cdecl, SetLastError = true)]
         internal static extern int SetChargingMode(ref CChargingMode var1, int var2);
 
+        [DllImport("PowerBattery.dll", EntryPoint = "#16", CallingConvention = CallingConvention.Cdecl, SetLastError = true)]
+        internal static extern CUSBCharger CUSBCharger(ref CUSBCharger var1);
+
+        [DllImport("PowerBattery.dll", EntryPoint = "#14", CallingConvention = CallingConvention.Cdecl, SetLastError = true)]
+        internal static extern CUSBBatteryCharger CUSBBatteryCharger(ref CUSBBatteryCharger var1);
+
+        [DllImport("PowerBattery.dll", EntryPoint = "#107", CallingConvention = CallingConvention.Cdecl, SetLastError = true)]
+        internal static extern int OpenOrClose(ref CUSBBatteryCharger var1);
+
+        [DllImport("PowerBattery.dll", EntryPoint = "#108", CallingConvention = CallingConvention.Cdecl, SetLastError = true)]
+        internal static extern int OpenOrClose(ref CUSBCharger var1);
+
+        [DllImport("PowerBattery.dll", EntryPoint = "#106", CallingConvention = CallingConvention.Cdecl, SetLastError = true)]
+        internal static extern int OpenFeature(ref CUSBCharger var1);
+
+        [DllImport("PowerBattery.dll", EntryPoint = "#105", CallingConvention = CallingConvention.Cdecl, SetLastError = true)]
+        internal static extern int OpenFeature(ref CUSBBatteryCharger var1);
+
+        [DllImport("PowerBattery.dll", EntryPoint = "#53", CallingConvention = CallingConvention.Cdecl, SetLastError = true)]
+        internal static extern int CloseFeature(ref CUSBCharger var1);
+
+        [DllImport("PowerBattery.dll", EntryPoint = "#52", CallingConvention = CallingConvention.Cdecl, SetLastError = true)]
+        internal static extern int CloseFeature(ref CUSBBatteryCharger var1);
 
 
         public PowerPlan GetPowerPlan()
@@ -67,7 +90,63 @@ namespace IdeapadToolkit.Services
         {
             CChargingMode instance = new();
             instance = CChargingMode(ref instance);
-            SetChargingMode(ref instance, (int)chargingMode);
+            _ = SetChargingMode(ref instance, (int)chargingMode);
+        }
+
+        public bool IsAlwaysOnUsbEnabled()
+        {
+            CUSBCharger instance = new();
+            instance = CUSBCharger(ref instance);
+            var res = (OpenOrClose(ref instance));
+            return res switch
+            {
+                2 => false,
+                1 => true,
+                _ => false
+            };
+        }
+
+        public void SetAlwaysOnUsb(bool alwaysOnUsbEnabled)
+        {
+            CUSBCharger instance = new();
+            instance = CUSBCharger(ref instance);
+            switch (alwaysOnUsbEnabled)
+            {
+                case true:
+                    _ = OpenFeature(ref instance);
+                    break;
+                case false:
+                    _ = CloseFeature(ref instance);
+                    break;
+            }
+        }
+
+        public bool IsAlwaysOnUsbBatteryEnabled()
+        {
+            CUSBBatteryCharger instance = new();
+            instance = CUSBBatteryCharger(ref instance);
+            var res = (OpenOrClose(ref instance));
+            return res switch
+            {
+                2 => false,
+                1 => true,
+                _ => false
+            };
+        }
+
+        public void SetAlwaysOnUsbBattery(bool alwaysOnUsbBattryEnabled)
+        {
+            CUSBBatteryCharger instance = new();
+            instance = CUSBBatteryCharger(ref instance);
+            switch (alwaysOnUsbBattryEnabled)
+            {
+                case true:
+                    _ = OpenFeature(ref instance);
+                    break;
+                case false:
+                    _ = CloseFeature(ref instance);
+                    break;
+            }
         }
     }
 }

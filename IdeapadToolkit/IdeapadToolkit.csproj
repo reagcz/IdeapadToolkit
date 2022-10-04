@@ -8,7 +8,7 @@
     <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
     <AnalysisLevel>latest-recommended</AnalysisLevel>
     <ApplicationManifest>app.manifest</ApplicationManifest>
-    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <ApplicationIcon>Resources\icon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,7 +17,6 @@
     <PackageReference Include="Hardcodet.NotifyIcon.Wpf" Version="1.1.0" />
     <PackageReference Include="ModernWpfUI" Version="0.9.7-preview.2" />
     <PackageReference Include="SimpleInjector" Version="5.4.1" />
-    <PackageReference Include="Vanara.PInvoke.Kernel32" Version="3.4.9" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,11 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Resources\test.ico" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Resources\test.ico" />
+    <Resource Include="Resources\icon.ico" />
   </ItemGroup>
 
   <ItemGroup>

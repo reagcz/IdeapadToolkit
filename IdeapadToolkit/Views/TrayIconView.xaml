@@ -16,8 +16,9 @@
     <Grid>
         <tb:TaskbarIcon
             x:Name="TrayIcon"
-            IconSource="\Resources\test.ico"
+            IconSource="\Resources\icon.ico"
             ToolTipText="Ideapad Toolkit"
+            TrayMouseDoubleClick="TrayIcon_TrayMouseDoubleClick"
             Visibility="Collapsed">
             <FrameworkElement.ContextMenu>
                 <ContextMenu Loaded="ContextMenu_Loaded">

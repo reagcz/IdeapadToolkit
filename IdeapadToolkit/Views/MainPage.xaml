@@ -55,8 +55,12 @@
                     FontSize="24"
                     Text="Other" />
                 <ui:SimpleStackPanel Spacing="16">
-                    <ui:ToggleSwitch ui:ControlHelper.Header="Flip to Boot" />
-                    <ui:ToggleSwitch ui:ControlHelper.Header="Always on USB" />
+                    <ui:ToggleSwitch ui:ControlHelper.Header="Flip to Boot" IsOn="{Binding IsFlipToBootEnabled}" />
+                    <ui:ToggleSwitch ui:ControlHelper.Header="Always on USB" IsOn="{Binding IsAlwaysOnUsbEnabled}" />
+                    <ui:ToggleSwitch
+                        ui:ControlHelper.Header="Always on USB on battery"
+                        IsEnabled="{Binding IsAlwaysOnUsbEnabled}"
+                        IsOn="{Binding IsAlwaysOnUsbBatteryEnabled}" />
                 </ui:SimpleStackPanel>
             </ui:SimpleStackPanel>
         </ScrollViewer>
