@@ -1,0 +1,60 @@
+﻿<Page
+    x:Class="IdeapadToolkit.Views.TrayIconView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:IdeapadToolkit.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:system="clr-namespace:System;assembly=mscorlib"
+    xmlns:tb="http://www.hardcodet.net/taskbar"
+    xmlns:ui="http://schemas.modernwpf.com/2019"
+    xmlns:vm="clr-namespace:IdeapadToolkit.ViewModels"
+    Title="TrayIconView"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <Grid>
+        <tb:TaskbarIcon
+            x:Name="TrayIcon"
+            IconSource="\Resources\test.ico"
+            ToolTipText="Ideapad Toolkit"
+            Visibility="Collapsed">
+            <FrameworkElement.ContextMenu>
+                <ContextMenu Loaded="ContextMenu_Loaded">
+                    <ui:RadioMenuItem
+                        Command="{Binding SetPlanCommand}"
+                        GroupName="PowerPlan"
+                        Header="Efficiency Mode"
+                        IsChecked="{Binding Path=IsEfficientChecked}">
+                        <ui:RadioMenuItem.CommandParameter>
+                            <system:Int32>2</system:Int32>
+                        </ui:RadioMenuItem.CommandParameter>
+                    </ui:RadioMenuItem>
+                    <ui:RadioMenuItem
+                        Command="{Binding SetPlanCommand}"
+                        GroupName="PowerPlan"
+                        Header="Intelligent Cooling"
+                        IsChecked="{Binding Path=IsIntelligentCoolingChecked}">
+                        <ui:RadioMenuItem.CommandParameter>
+                            <system:Int32>1</system:Int32>
+                        </ui:RadioMenuItem.CommandParameter>
+                    </ui:RadioMenuItem>
+                    <ui:RadioMenuItem
+                        Command="{Binding SetPlanCommand}"
+                        GroupName="PowerPlan"
+                        Header="Extreme Performance"
+                        IsChecked="{Binding Path=IsExtremePerformanceChecked}">
+                        <ui:RadioMenuItem.CommandParameter>
+                            <system:Int32>3</system:Int32>
+                        </ui:RadioMenuItem.CommandParameter>
+                    </ui:RadioMenuItem>
+                    <Separator />
+                    <MenuItem
+                        Name="MenuItemExit"
+                        Click="MenuItemExit_Click"
+                        Header="Exit" />
+                </ContextMenu>
+            </FrameworkElement.ContextMenu>
+        </tb:TaskbarIcon>
+    </Grid>
+</Page>

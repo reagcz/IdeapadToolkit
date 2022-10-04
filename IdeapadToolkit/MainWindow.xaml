@@ -1,0 +1,77 @@
+﻿<Window
+    x:Class="IdeapadToolkit.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:IdeapadToolkit"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mwpf="http://schemas.modernwpf.com/2019"
+    xmlns:ui="http://schemas.modernwpf.com/2019"
+    xmlns:views="clr-namespace:IdeapadToolkit.Views"
+    x:Name="_mainwindow"
+    Title="Ideapad Toolkit"
+    Width="400"
+    Height="450"
+    MinWidth="400"
+    ui:TitleBar.ButtonStyle="{DynamicResource TitleBarButtonStyle}"
+    ui:TitleBar.ExtendViewIntoTitleBar="True"
+    ui:TitleBar.IsBackButtonVisible="False"
+    ui:TitleBar.Style="{DynamicResource TitleBarStyle}"
+    ui:WindowHelper.UseModernWindowStyle="True"
+    Background="{DynamicResource SystemControlBackgroundChromeBlackMediumBrush}"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+    <FrameworkElement.Resources>
+        <ResourceDictionary>
+            <Style x:Key="TitleBarStyle" TargetType="{x:Type mwpf:TitleBarControl}">
+                <Setter Property="mwpf:ThemeManager.RequestedTheme" Value="Dark" />
+            </Style>
+            <Style x:Key="TitleBarButtonStyle" TargetType="{x:Type mwpf:TitleBarButton}">
+                <Setter Property="mwpf:TitleBarButton.IsActive" Value="{Binding IsActive, ElementName=_mainwindow}" />
+            </Style>
+        </ResourceDictionary>
+    </FrameworkElement.Resources>
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid
+                Height="{Binding ElementName=_mainwindow, Path=(mwpf:TitleBar.Height)}"
+                Background="{DynamicResource SystemControlBackgroundAccentBrush}"
+                Row="0">
+                <TextBlock
+                    Margin="8,0,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Background="#00FFFFFF"
+                    FontWeight="Bold"
+                    Foreground="White"
+                    Style="{DynamicResource BodyTextBlockStyle}"
+                    Text="Ideapad Toolkit" />
+            </Grid>
+
+            <mwpf:NavigationView
+                Grid.Row="1"
+                FontSize="20"
+                IsBackButtonVisible="Collapsed"
+                IsBackEnabled="False"
+                IsSettingsVisible="True"
+                ItemInvoked="NavigationView_ItemInvoked"
+                PaneDisplayMode="Top">
+                <mwpf:NavigationView.MenuItems>
+                    <mwpf:NavigationViewItem Content="Home" Tag="{x:Type views:MainPage}">
+                        <mwpf:NavigationViewItem.Icon>
+                            <mwpf:SymbolIcon Symbol="DisableUpdates" />
+                        </mwpf:NavigationViewItem.Icon>
+                    </mwpf:NavigationViewItem>
+                </mwpf:NavigationView.MenuItems>
+                <mwpf:Frame
+                    Name="RootFrame"
+                    KeyboardNavigation.TabNavigation="None"
+                    NavigationUIVisibility="Hidden" />
+            </mwpf:NavigationView>
+        </Grid>
+    </Grid>
+</Window>
