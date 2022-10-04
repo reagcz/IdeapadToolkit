@@ -32,3 +32,13 @@ To test, try changing the settings and verify the changes in Lenovo Vantage
  1. Install Lenovo Vantage from the Microsoft Store
  2. Copy it from C:\ProgramData\Lenovo\Vantage\Addins\IdeaNotebookAddin\ to the Ideapad Toolkit directory
  3. Lenovo Vantage can now be uninstalled
+ 
+ ## Third party licenses
+ [Hardcodet.NotifyIcon.Wpf](https://github.com/hardcodet/wpf-notifyicon/blob/develop/LICENSE)
+ 
+ [ModernWpf](https://github.com/Kinnara/ModernWpf/blob/master/LICENSE)
+ 
+ [SimpleInjector](https://github.com/simpleinjector/SimpleInjector/blob/master/LICENSE)
+ 
+ [.NET Community Toolkit](https://github.com/CommunityToolkit/dotnet/blob/main/License.md)
+ 
