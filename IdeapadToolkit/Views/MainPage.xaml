@@ -50,6 +50,36 @@
                         </RadioButton.CommandParameter>
                     </RadioButton>
                 </ui:SimpleStackPanel>
+                <TextBlock FontSize="24" Text="Battery Charging Mode" />
+                <ui:SimpleStackPanel>
+                    <RadioButton
+                        Command="{Binding SetChargingModeCommand}"
+                        Content="Conservation"
+                        GroupName="ChargingMode"
+                        IsChecked="{Binding IsConservationModeEnabled}">
+                        <RadioButton.CommandParameter>
+                            <system:Int32>1</system:Int32>
+                        </RadioButton.CommandParameter>
+                    </RadioButton>
+                    <RadioButton
+                        Command="{Binding SetChargingModeCommand}"
+                        Content="Normal"
+                        GroupName="ChargingMode"
+                        IsChecked="{Binding IsNormalModeEnabled}">
+                        <RadioButton.CommandParameter>
+                            <system:Int32>0</system:Int32>
+                        </RadioButton.CommandParameter>
+                    </RadioButton>
+                    <RadioButton
+                        Command="{Binding SetChargingModeCommand}"
+                        Content="Rapid"
+                        GroupName="ChargingMode"
+                        IsChecked="{Binding IsRapidModeEnabled}">
+                        <RadioButton.CommandParameter>
+                            <system:Int32>2</system:Int32>
+                        </RadioButton.CommandParameter>
+                    </RadioButton>
+                </ui:SimpleStackPanel>
                 <TextBlock
                     Margin="0,0,0,0"
                     FontSize="24"

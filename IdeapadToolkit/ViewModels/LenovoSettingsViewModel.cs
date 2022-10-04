@@ -22,14 +22,19 @@ namespace IdeapadToolkit.ViewModels
         public void Refresh()
         {
             Plan = _lenovoPowerSettingsService.GetPowerPlan();
+            Mode = _lenovoPowerSettingsService.GetChargingMode();
         }
 
         [ObservableProperty]
         [NotifyPropertyChangedFor(nameof(IsEfficientChecked), nameof(IsIntelligentCoolingChecked), nameof(IsExtremePerformanceChecked))]
         private PowerPlan _plan;
+        [ObservableProperty]
+        [NotifyPropertyChangedFor(nameof(IsConservationModeEnabled), nameof(IsNormalModeEnabled), nameof(IsRapidModeEnabled))]
+        private ChargingMode _mode;
         private readonly ILenovoPowerSettingsService _lenovoPowerSettingsService;
         private readonly IUEFISettingsService _uEFISettingsService;
 
+        #region PowerPlanProperties
         public bool IsEfficientChecked
         {
             get
@@ -56,7 +61,9 @@ namespace IdeapadToolkit.ViewModels
             }
             set { }
         }
+        #endregion
 
+        #region OtherProperties
         public bool IsFlipToBootEnabled
         {
             get
@@ -92,6 +99,55 @@ namespace IdeapadToolkit.ViewModels
             {
                 _lenovoPowerSettingsService.SetAlwaysOnUsbBattery(value);
             }
+        }
+        #endregion
+
+        #region ChargingModeProperties
+        public bool IsConservationModeEnabled
+        {
+            get
+            {
+                return _mode == ChargingMode.Conservation;
+            }
+            set
+            {
+            }
+        }
+
+        public bool IsNormalModeEnabled
+        {
+            get
+            {
+                return _mode == ChargingMode.Normal;
+            }
+            set
+            {
+            }
+        }
+
+        public bool IsRapidModeEnabled
+        {
+            get
+            {
+                return _mode == ChargingMode.Rapid;
+            }
+            set
+            {
+            }
+        }
+
+        #endregion
+
+        [RelayCommand]
+        private void SetChargingMode(int? mode)
+        {
+            if (mode == null) return;
+            try
+            {
+                _lenovoPowerSettingsService.SetChargingMode((ChargingMode)mode);
+                Refresh();
+            }
+            catch { }
         }
 
         [RelayCommand]

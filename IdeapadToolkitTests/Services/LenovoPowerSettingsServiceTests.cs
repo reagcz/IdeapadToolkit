@@ -56,5 +56,18 @@ namespace IdeapadToolkit.Services.Tests
             var res3 = _service.IsAlwaysOnUsbBatteryEnabled();
             Assert.AreEqual(res, res3);
         }
+
+        [TestMethod()]
+        private void SetChargingModeRandomTest()
+        {
+            _service.SetChargingMode(Models.ChargingMode.Normal);
+            Assert.IsTrue(_service.GetChargingMode() == Models.ChargingMode.Normal);
+            _service.SetChargingMode(Models.ChargingMode.Conservation);
+            Assert.IsTrue(_service.GetChargingMode() == Models.ChargingMode.Conservation);
+            _service.SetChargingMode(Models.ChargingMode.Rapid);
+            Assert.IsTrue(_service.GetChargingMode() == Models.ChargingMode.Rapid);
+            _service.SetChargingMode(Models.ChargingMode.Normal);
+            Assert.IsTrue(_service.GetChargingMode() == Models.ChargingMode.Normal);
+        }
     }
 }

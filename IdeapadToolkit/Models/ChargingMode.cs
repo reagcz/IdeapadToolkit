@@ -8,7 +8,7 @@ namespace IdeapadToolkit.Models
 {
     public enum ChargingMode
     {
-        Conservative = 1,
+        Conservation = 1,
         Normal = 0,
         Rapid = 2
     }
