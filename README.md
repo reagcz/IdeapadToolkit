@@ -9,6 +9,7 @@
 
 ![image](https://user-images.githubusercontent.com/62750643/193938407-4f96a444-4c29-44be-90e0-f6c4e182dbce.png)
 
+**After running, the app windows can be accessed by double clicking the tray icon**
 ## Supported laptops
 - Lenovo Flex 5 14ALC05 (Windows 11)
 
