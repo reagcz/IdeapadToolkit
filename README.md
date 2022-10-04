@@ -2,7 +2,7 @@
 
 **Ideapad Toolkit is a utility that allows you adjust the power setting from Lenovo Vantage, without having to use the slow official app**
 
-![image](https://user-images.githubusercontent.com/62750643/193938239-28a0c725-29a0-494e-95ca-91908fd84f9f.png)
+![image](https://user-images.githubusercontent.com/62750643/193948650-76596fe5-fab3-44aa-b656-fe15a2d93f46.png)
 
 
 **Power profiles can be quickly adjusted from the tray icon**
