@@ -46,7 +46,7 @@ namespace IdeapadToolkit
             base.OnStartup(e);
             Container container = _container = new Container();
             ConfigureServices(container);
-            bool exists = Process.GetProcessesByName(Path.GetFileNameWithoutExtension(Assembly.GetEntryAssembly()?.Location)).Length > 1;
+            bool exists = Process.GetProcessesByName(Path.GetFileNameWithoutExtension(Environment.ProcessPath)).Length > 1;
             if (exists && !e.Args.Contains("ignoreRunning"))
             {
                 MessageBox.Show("Already running!", "", MessageBoxButton.OK, MessageBoxImage.Asterisk);
