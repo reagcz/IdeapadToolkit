@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using IdeapadToolkit.Models;
 using IdeapadToolkit.Services;
+using ModernWpf.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +14,11 @@ namespace IdeapadToolkit.ViewModels
     [CommunityToolkit.Mvvm.ComponentModel.INotifyPropertyChanged]
     public partial class LenovoSettingsViewModel
     {
-        public LenovoSettingsViewModel(ILenovoPowerSettingsService lenovoPowerSettingsService, IUEFISettingsService uEFISettingsService)
+        public LenovoSettingsViewModel(ILenovoPowerSettingsService lenovoPowerSettingsService, IUEFISettingsService uEFISettingsService, IAdministratorPermissionService administratorPermissionService)
         {
             _lenovoPowerSettingsService = lenovoPowerSettingsService;
             _uEFISettingsService = uEFISettingsService;
+            _administratorPermissionService = administratorPermissionService;
         }
 
         public void Refresh()
@@ -33,6 +35,7 @@ namespace IdeapadToolkit.ViewModels
         private ChargingMode _mode;
         private readonly ILenovoPowerSettingsService _lenovoPowerSettingsService;
         private readonly IUEFISettingsService _uEFISettingsService;
+        private IAdministratorPermissionService _administratorPermissionService;
 
         #region PowerPlanProperties
         public bool IsEfficientChecked
@@ -68,13 +71,22 @@ namespace IdeapadToolkit.ViewModels
         {
             get
             {
-                return _uEFISettingsService.GetFlipToBootStatus();
+                if (IsAdministrator)
+                {
+                    return _uEFISettingsService.GetFlipToBootStatus();
+                }
+                else
+                {
+                    return false;
+                }
             }
             set
             {
                 _uEFISettingsService.SetFlipToBootStatus(value);
             }
         }
+
+
 
         public bool IsAlwaysOnUsbEnabled
         {
@@ -137,6 +149,7 @@ namespace IdeapadToolkit.ViewModels
         }
 
         #endregion
+        public bool IsAdministrator => _administratorPermissionService.IsAdministrator;
 
         [RelayCommand]
         private void SetChargingMode(int? mode)
@@ -148,6 +161,23 @@ namespace IdeapadToolkit.ViewModels
                 Refresh();
             }
             catch { }
+        }
+
+        [RelayCommand]
+        private async Task RestartAsAdmin()
+        {
+            var res = await new ContentDialog
+            {
+                Title = "Permission required",
+                Content = "The program will now restart as administrator",
+                PrimaryButtonText = "Ok",
+                SecondaryButtonText = "Cancel"
+            }.ShowAsync();
+
+            if (res == ContentDialogResult.Primary)
+            {
+                _administratorPermissionService.RelaunchAsAdmin();
+            }
         }
 
         [RelayCommand]

@@ -30,6 +30,7 @@ namespace IdeapadToolkit
             container.RegisterSingleton<ILenovoPowerSettingsService, LenovoPowerSettingsService>();
             container.RegisterSingleton<IUEFISettingsService, UEFISettingsService>();
             container.RegisterSingleton<IRunOnStartupService, RunOnStartupService>();
+            container.RegisterSingleton<IAdministratorPermissionService, AdministratorPermissionService>();
             container.RegisterSingleton<TrayIconView>();
 
             container.Register<MainWindow>();
@@ -38,7 +39,6 @@ namespace IdeapadToolkit
             container.Register<SettingsPage>();
 
             container.Register<SettingsViewModel>();
-            container.Register<MainViewModel>();
             container.RegisterSingleton<LenovoSettingsViewModel>();
         }
         protected override void OnStartup(StartupEventArgs e)
@@ -47,7 +47,7 @@ namespace IdeapadToolkit
             Container container = _container = new Container();
             ConfigureServices(container);
             bool exists = Process.GetProcessesByName(Path.GetFileNameWithoutExtension(Assembly.GetEntryAssembly()?.Location)).Length > 1;
-            if (exists)
+            if (exists && !e.Args.Contains("ignoreRunning"))
             {
                 MessageBox.Show("Already running!", "", MessageBoxButton.OK, MessageBoxImage.Asterisk);
                 Application.Current.Shutdown();
@@ -58,10 +58,14 @@ namespace IdeapadToolkit
                 base.ShutdownMode = ShutdownMode.OnExplicitShutdown;
             }
 
-            if(!File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "PowerBattery.dll")))
+            if (!File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "PowerBattery.dll")))
             {
                 MessageBox.Show("PowerBattery.dll has to be present in the same folder as IdeapadToolkit.exe", "", MessageBoxButton.OK, MessageBoxImage.Asterisk);
                 Application.Current.Shutdown();
+            }
+            if (!e.Args.Contains("nogui"))
+            {
+                ShowMainWindow(null, null);
             }
 
             var iconview = _container.GetInstance<TrayIconView>();
@@ -69,7 +73,7 @@ namespace IdeapadToolkit
             iconview.TrayIconClicked += ShowMainWindow;
         }
 
-        public void ShowMainWindow(object? sender, EventArgs e)
+        public void ShowMainWindow(object? sender, EventArgs? e)
         {
             if (App.Current.MainWindow == null)
             {

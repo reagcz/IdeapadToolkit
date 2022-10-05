@@ -18,9 +18,6 @@ If your model is similar enough, chances are it will work.
 To test, try changing the settings and verify the changes in Lenovo Vantage
 
 ## Prerequisites
-- Administrator Priviledges
-  - The app needs to run as admin to support the Flip to Boot feature. See Services/UEFISettingsService.cs
-
 - [.NET 6 Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-6.0.9-windows-x64-installer)
 
 - [Lenovo Intelligent Thermal Solution Driver](https://www.google.com/search?q=lenovo+<YOUR+MODEL>+intelligent+thermal+solution+driver+download)

@@ -67,7 +67,7 @@ namespace IdeapadToolkit.Services
         private static void EnableRunAtStartup()
         {
             using RegistryKey key = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Run", true);
-            key.SetValue("IdeapadToolkit", _assemblyPath);
+            key.SetValue("IdeapadToolkit", _assemblyPath + " nogui");
         }
     }
 }
