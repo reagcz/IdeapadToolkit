@@ -34,7 +34,7 @@
 
   <ItemGroup>
     <None Update="PowerBattery.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 

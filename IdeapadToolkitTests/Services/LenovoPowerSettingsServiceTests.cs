@@ -58,7 +58,7 @@ namespace IdeapadToolkit.Services.Tests
         }
 
         [TestMethod()]
-        private void SetChargingModeRandomTest()
+        public void SetChargingModeRandomTest()
         {
             _service.SetChargingMode(Models.ChargingMode.Normal);
             Assert.IsTrue(_service.GetChargingMode() == Models.ChargingMode.Normal);
