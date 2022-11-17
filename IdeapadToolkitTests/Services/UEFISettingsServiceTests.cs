@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Moq;
+using Serilog;
 
 namespace IdeapadToolkit.Services.Tests
 {
@@ -15,7 +17,8 @@ namespace IdeapadToolkit.Services.Tests
         [TestInitialize]
         public void TestInitialize()
         {
-            _service = new UEFISettingsService();
+            var loggerMock = new Mock<ILogger>();
+            _service = new UEFISettingsService(loggerMock.Object);
         }
 
         [TestMethod()]

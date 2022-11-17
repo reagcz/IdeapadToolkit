@@ -13,7 +13,9 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using Serilog;
 using System.Windows;
+using Serilog.Core;
 
 namespace IdeapadToolkit
 {
@@ -23,9 +25,21 @@ namespace IdeapadToolkit
     public partial class App : Application
     {
         private Container _container;
+        private ILogger _logger;
 
-        public static void ConfigureServices(Container container)
+        public void ConfigureServices(Container container)
         {
+            // For later use
+            var logLevel = new LoggingLevelSwitch();
+            logLevel.MinimumLevel = Serilog.Events.LogEventLevel.Error;
+            var loggerConfig = new LoggerConfiguration()
+                .MinimumLevel.ControlledBy(logLevel)
+                .WriteTo.File("log.txt", rollingInterval: RollingInterval.Day, retainedFileCountLimit: 7, levelSwitch: logLevel);
+            var logger = _logger = loggerConfig.CreateLogger();
+            
+            container.RegisterInstance(logger);
+            container.RegisterInstance(logLevel);
+            
             container.RegisterSingleton<INavigationService, NavigationService>();
             container.RegisterSingleton<ILenovoPowerSettingsService, LenovoPowerSettingsService>();
             container.RegisterSingleton<IUEFISettingsService, UEFISettingsService>();
@@ -46,6 +60,7 @@ namespace IdeapadToolkit
             base.OnStartup(e);
             Container container = _container = new Container();
             ConfigureServices(container);
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             bool exists = Process.GetProcessesByName(Path.GetFileNameWithoutExtension(Environment.ProcessPath)).Length > 1;
             if (exists && !e.Args.Contains("ignoreRunning"))
             {
@@ -67,10 +82,15 @@ namespace IdeapadToolkit
             {
                 ShowMainWindow(null, null);
             }
-
+            
             var iconview = _container.GetInstance<TrayIconView>();
             iconview.MakeVisible();
             iconview.TrayIconClicked += ShowMainWindow;
+        }
+
+        private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            _logger.Fatal((Exception)e.ExceptionObject, "Unhandled exception");
         }
 
         public void ShowMainWindow(object? sender, EventArgs? e)
