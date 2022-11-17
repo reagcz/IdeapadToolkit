@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using IdeapadToolkit.Models;
 using IdeapadToolkit.Services;
 using ModernWpf.Controls;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,18 +15,18 @@ namespace IdeapadToolkit.ViewModels
     [CommunityToolkit.Mvvm.ComponentModel.INotifyPropertyChanged]
     public partial class LenovoSettingsViewModel
     {
-        public LenovoSettingsViewModel(ILenovoPowerSettingsService lenovoPowerSettingsService, IUEFISettingsService uEFISettingsService, IAdministratorPermissionService administratorPermissionService)
+        public LenovoSettingsViewModel(ILenovoPowerSettingsService lenovoPowerSettingsService, IUEFISettingsService uEFISettingsService, IAdministratorPermissionService administratorPermissionService, ILogger logger)
         {
             _lenovoPowerSettingsService = lenovoPowerSettingsService;
             _uEFISettingsService = uEFISettingsService;
             _administratorPermissionService = administratorPermissionService;
+            _logger = logger;
         }
 
-        public void Refresh()
-        {
-            Plan = _lenovoPowerSettingsService.GetPowerPlan();
-            Mode = _lenovoPowerSettingsService.GetChargingMode();
-        }
+        private readonly ILenovoPowerSettingsService _lenovoPowerSettingsService;
+        private readonly IUEFISettingsService _uEFISettingsService;
+        private IAdministratorPermissionService _administratorPermissionService;
+        private readonly ILogger _logger;
 
         [ObservableProperty]
         [NotifyPropertyChangedFor(nameof(IsEfficientChecked), nameof(IsIntelligentCoolingChecked), nameof(IsExtremePerformanceChecked))]
@@ -33,9 +34,18 @@ namespace IdeapadToolkit.ViewModels
         [ObservableProperty]
         [NotifyPropertyChangedFor(nameof(IsConservationModeEnabled), nameof(IsNormalModeEnabled), nameof(IsRapidModeEnabled))]
         private ChargingMode _mode;
-        private readonly ILenovoPowerSettingsService _lenovoPowerSettingsService;
-        private readonly IUEFISettingsService _uEFISettingsService;
-        private IAdministratorPermissionService _administratorPermissionService;
+        public void Refresh()
+        {
+            try
+            {
+                Plan = _lenovoPowerSettingsService.GetPowerPlan();
+                Mode = _lenovoPowerSettingsService.GetChargingMode();
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex, "Exception while fetching current settings");
+            }
+        }
 
         #region PowerPlanProperties
         public bool IsEfficientChecked
@@ -73,7 +83,16 @@ namespace IdeapadToolkit.ViewModels
             {
                 if (IsAdministrator)
                 {
-                    return _uEFISettingsService.GetFlipToBootStatus();
+                    bool res = false;
+                    try
+                    {
+                        _uEFISettingsService.GetFlipToBootStatus();
+                    }
+                    catch (Exception ex)
+                    {
+                        _logger.Error(ex, "Exception while getting FlipToBoot status");
+                    }
+                    return res;
                 }
                 else
                 {
@@ -82,21 +101,41 @@ namespace IdeapadToolkit.ViewModels
             }
             set
             {
-                _uEFISettingsService.SetFlipToBootStatus(value);
+                try
+                {
+                    _uEFISettingsService.SetFlipToBootStatus(value);
+                }
+                catch (Exception ex)
+                {
+                    _logger.Error(ex, "Exception while setting FlipToBoot status");
+                }
             }
         }
-
-
 
         public bool IsAlwaysOnUsbEnabled
         {
             get
             {
-                return _lenovoPowerSettingsService.IsAlwaysOnUsbEnabled();
+                try
+                {
+                    return _lenovoPowerSettingsService.IsAlwaysOnUsbEnabled();
+                }
+                catch (Exception ex)
+                {
+                    _logger.Error(ex, "Error while getting Always on usb setting");
+                    return false;
+                }
             }
             set
             {
-                _lenovoPowerSettingsService.SetAlwaysOnUsb(value);
+                try
+                {
+                    _lenovoPowerSettingsService.SetAlwaysOnUsb(value);
+                }
+                catch (Exception ex)
+                {
+                    _logger.Error(ex, "Error while setting Always on usb setting");
+                }
                 OnPropertyChanged(nameof(IsAlwaysOnUsbEnabled));
             }
         }
@@ -105,11 +144,26 @@ namespace IdeapadToolkit.ViewModels
         {
             get
             {
-                return _lenovoPowerSettingsService.IsAlwaysOnUsbBatteryEnabled();
+                try
+                {
+                    return _lenovoPowerSettingsService.IsAlwaysOnUsbBatteryEnabled();
+                }
+                catch (Exception ex)
+                {
+                    _logger.Error(ex, "Error while getting Always on usb battery setting");
+                    return false;
+                }
             }
             set
             {
-                _lenovoPowerSettingsService.SetAlwaysOnUsbBattery(value);
+                try
+                {
+                    _lenovoPowerSettingsService.SetAlwaysOnUsbBattery(value);
+                }
+                catch (Exception ex)
+                {
+                    _logger.Error(ex, "Error while setting Always on usb battery setting");
+                }
             }
         }
         #endregion
@@ -160,7 +214,10 @@ namespace IdeapadToolkit.ViewModels
                 _lenovoPowerSettingsService.SetChargingMode((ChargingMode)mode);
                 Refresh();
             }
-            catch { }
+            catch (Exception ex)
+            {
+                _logger.Error(ex, "Error while setting charging mode");
+            }
         }
 
         [RelayCommand]
@@ -189,7 +246,10 @@ namespace IdeapadToolkit.ViewModels
                 _lenovoPowerSettingsService.SetPowerPlan((PowerPlan)plan);
                 Refresh();
             }
-            catch { }
+            catch (Exception ex)
+            {
+                _logger.Error(ex, "Exception while setting power plan");
+            }
         }
     }
 

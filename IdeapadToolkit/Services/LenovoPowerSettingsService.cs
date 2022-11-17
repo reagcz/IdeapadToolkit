@@ -13,51 +13,54 @@ namespace IdeapadToolkit.Services
 {
     public class LenovoPowerSettingsService : ILenovoPowerSettingsService
     {
-        [DllImport("PowerBattery.dll", EntryPoint = "#142", CallingConvention = CallingConvention.Cdecl, SetLastError = true)]
+        [DllImport("PowerBattery.dll", EntryPoint = "?SetITSMode@CIntelligentCooling@PowerBattery@@QEAAHAEAW4ITSMode@12@@Z", CallingConvention = CallingConvention.Cdecl, SetLastError = true)]
         internal static extern int SetITSMode(ref CIntelligentCooling var1, ref PowerPlan var2);
 
 
-        [DllImport("PowerBattery.dll", EntryPoint = "#8", CallingConvention = CallingConvention.Cdecl, SetLastError = true)]
+        [DllImport("PowerBattery.dll", EntryPoint = "??0CIntelligentCooling@PowerBattery@@QEAA@XZ", CallingConvention = CallingConvention.Cdecl, SetLastError = true)]
         internal static extern CIntelligentCooling CIntelligentCooling(ref CIntelligentCooling var1);
 
 
-        [DllImport("PowerBattery.dll", EntryPoint = "#82", CallingConvention = CallingConvention.Cdecl, SetLastError = true)]
+        [DllImport("PowerBattery.dll", EntryPoint = "?GetITSMode@CIntelligentCooling@PowerBattery@@QEAAHAEAHAEAW4ITSMode@12@@Z", CallingConvention = CallingConvention.Cdecl, SetLastError = true)]
         internal static extern int GetITSMode(ref CIntelligentCooling var1, ref int var2, ref PowerPlan var3);
 
 
-        [DllImport("PowerBattery.dll", EntryPoint = "#6", CallingConvention = CallingConvention.Cdecl, SetLastError = true)]
+        [DllImport("PowerBattery.dll", EntryPoint = "??0CChargingMode@PowerBattery@@QEAA@XZ", CallingConvention = CallingConvention.Cdecl, SetLastError = true)]
         internal static extern CChargingMode CChargingMode(ref CChargingMode var1);
 
 
-        [DllImport("PowerBattery.dll", EntryPoint = "#74", CallingConvention = CallingConvention.Cdecl, SetLastError = true)]
+        [DllImport("PowerBattery.dll", EntryPoint = "?GetChargingMode@CChargingMode@PowerBattery@@QEBAHXZ", CallingConvention = CallingConvention.Cdecl, SetLastError = true)]
         internal static extern int GetChargingMode(ref CChargingMode var1);
 
-
-        [DllImport("PowerBattery.dll", EntryPoint = "#139", CallingConvention = CallingConvention.Cdecl, SetLastError = true)]
+        [DllImport("PowerBattery.dll", EntryPoint = "?SetChargingMode@CChargingMode@PowerBattery@@QEBAHH@Z", CallingConvention = CallingConvention.Cdecl, SetLastError = true)]
         internal static extern int SetChargingMode(ref CChargingMode var1, int var2);
 
-        [DllImport("PowerBattery.dll", EntryPoint = "#16", CallingConvention = CallingConvention.Cdecl, SetLastError = true)]
+        [DllImport("PowerBattery.dll", EntryPoint = "?SetChargingMode@CChargingMode@PowerBattery@@QEBAHH_N@Z", CallingConvention = CallingConvention.Cdecl, SetLastError = true)]
+        // I don't know what the newly added boolean does, but it doesn't seem to matter
+        internal static extern int SetChargingModeFallBack(ref CChargingMode var1, int var2, bool var3);
+
+        [DllImport("PowerBattery.dll", EntryPoint = "??0CUSBCharger@PowerBattery@@QEAA@XZ", CallingConvention = CallingConvention.Cdecl, SetLastError = true)]
         internal static extern CUSBCharger CUSBCharger(ref CUSBCharger var1);
 
-        [DllImport("PowerBattery.dll", EntryPoint = "#14", CallingConvention = CallingConvention.Cdecl, SetLastError = true)]
+        [DllImport("PowerBattery.dll", EntryPoint = "??0CUSBBatteryCharger@PowerBattery@@QEAA@XZ", CallingConvention = CallingConvention.Cdecl, SetLastError = true)]
         internal static extern CUSBBatteryCharger CUSBBatteryCharger(ref CUSBBatteryCharger var1);
 
-        [DllImport("PowerBattery.dll", EntryPoint = "#107", CallingConvention = CallingConvention.Cdecl, SetLastError = true)]
+        [DllImport("PowerBattery.dll", EntryPoint = "?OpenOrClose@CUSBBatteryCharger@PowerBattery@@UEAAHXZ", CallingConvention = CallingConvention.Cdecl, SetLastError = true)]
         internal static extern int OpenOrClose(ref CUSBBatteryCharger var1);
 
-        [DllImport("PowerBattery.dll", EntryPoint = "#108", CallingConvention = CallingConvention.Cdecl, SetLastError = true)]
+        [DllImport("PowerBattery.dll", EntryPoint = "?OpenOrClose@CUSBCharger@PowerBattery@@UEAAHXZ", CallingConvention = CallingConvention.Cdecl, SetLastError = true)]
         internal static extern int OpenOrClose(ref CUSBCharger var1);
 
-        [DllImport("PowerBattery.dll", EntryPoint = "#106", CallingConvention = CallingConvention.Cdecl, SetLastError = true)]
+        [DllImport("PowerBattery.dll", EntryPoint = "?OpenFeature@CUSBCharger@PowerBattery@@UEAAHXZ", CallingConvention = CallingConvention.Cdecl, SetLastError = true)]
         internal static extern int OpenFeature(ref CUSBCharger var1);
 
-        [DllImport("PowerBattery.dll", EntryPoint = "#105", CallingConvention = CallingConvention.Cdecl, SetLastError = true)]
+        [DllImport("PowerBattery.dll", EntryPoint = "?OpenFeature@CUSBBatteryCharger@PowerBattery@@UEAAHXZ", CallingConvention = CallingConvention.Cdecl, SetLastError = true)]
         internal static extern int OpenFeature(ref CUSBBatteryCharger var1);
 
-        [DllImport("PowerBattery.dll", EntryPoint = "#53", CallingConvention = CallingConvention.Cdecl, SetLastError = true)]
+        [DllImport("PowerBattery.dll", EntryPoint = "?CloseFeature@CUSBCharger@PowerBattery@@UEAAHXZ", CallingConvention = CallingConvention.Cdecl, SetLastError = true)]
         internal static extern int CloseFeature(ref CUSBCharger var1);
 
-        [DllImport("PowerBattery.dll", EntryPoint = "#52", CallingConvention = CallingConvention.Cdecl, SetLastError = true)]
+        [DllImport("PowerBattery.dll", EntryPoint = "?CloseFeature@CUSBBatteryCharger@PowerBattery@@UEAAHXZ", CallingConvention = CallingConvention.Cdecl, SetLastError = true)]
         internal static extern int CloseFeature(ref CUSBBatteryCharger var1);
 
 
@@ -90,7 +93,14 @@ namespace IdeapadToolkit.Services
         {
             CChargingMode instance = new();
             instance = CChargingMode(ref instance);
-            _ = SetChargingMode(ref instance, (int)chargingMode);
+            try
+            {
+                _ = SetChargingMode(ref instance, (int)chargingMode);
+            }
+            catch (SystemException)
+            {
+                _ = SetChargingModeFallBack(ref instance, (int)chargingMode, false);
+            }
         }
 
         public bool IsAlwaysOnUsbEnabled()

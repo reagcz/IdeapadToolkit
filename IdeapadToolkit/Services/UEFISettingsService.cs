@@ -1,4 +1,5 @@
 ﻿using IdeapadToolkitService.Helpers;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,8 +15,13 @@ namespace IdeapadToolkit.Services
         private static readonly string Guid = "{D743491E-F484-4952-A87D-8D5DD189B70C}";
         private static readonly string ScopeName = "FBSWIF";
         private static readonly int ScopeAttribute = 7;
+        private readonly ILogger _logger;
 
-        private static bool SetPrivilege(bool enable)
+        public UEFISettingsService(ILogger logger)
+        {
+            this._logger = logger;
+        }
+        private bool SetPrivilege(bool enable)
         {
             try
             {
@@ -37,8 +43,9 @@ namespace IdeapadToolkit.Services
                     return false;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                _logger.Error(ex, "Exception while getting UEFI privilege");
                 return false;
             }
             return true;
@@ -68,8 +75,9 @@ namespace IdeapadToolkit.Services
                     dataFromUefi = lastWin32Error * -1;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                _logger.Error(ex, "Exception while getting UEFI FlipToBoot status");
             }
             finally
             {
@@ -100,8 +108,9 @@ namespace IdeapadToolkit.Services
                 var res = (Win32.SetFirmwareEnvironmentVariableExW(ScopeName, Guid, ref structure, Marshal.SizeOf<LenovoFlipToBootSwInterface>(), ScopeAttribute));
                 if (res != 0) return 0;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                _logger.Error(ex, "Error while setting UEFI FlipToBoot status");
             }
             finally { _ = SetPrivilege(false); }
             return num1;
