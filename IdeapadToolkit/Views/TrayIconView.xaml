@@ -25,7 +25,7 @@
                     <ui:RadioMenuItem
                         Command="{Binding SetPlanCommand}"
                         GroupName="PowerPlan"
-                        Header="Efficiency Mode"
+                        Header="Battery Saving"
                         IsChecked="{Binding Path=IsEfficientChecked}">
                         <ui:RadioMenuItem.CommandParameter>
                             <system:Int32>2</system:Int32>
