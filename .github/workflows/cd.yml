@@ -14,7 +14,7 @@ jobs:
     env:
       App_Packages_Archive: IdeapadToolkit.zip
       License_Path: IdeapadToolkit\Properties\PublishProfiles\3RD_PARTY_LICENSES.txt
-      App_Publish_Directory: bin\Release\net6.0-windows10.0.20348.0\publish\win-x64
+      App_Publish_Directory: bin\Release\net6.0-windows\publish\win-x64
       App_Project_Directory: IdeapadToolkit\
       Solution_Path: IdeapadToolkit.sln
       Project_Path: IdeapadToolkit\IdeapadToolkit.csproj
