@@ -13,6 +13,7 @@ jobs:
 
     env:
       App_Packages_Archive: IdeapadToolkit.zip
+      License_Path: IdeapadToolkit\Properties\PublishProfiles\3RD_PARTY_LICENSES.txt
       App_Publish_Directory: bin\Release\net6.0-windows10.0.20348.0\publish\win-x64
       App_Project_Directory: IdeapadToolkit\
       Solution_Path: IdeapadToolkit.sln
@@ -44,6 +45,10 @@ jobs:
     # Build the Windows Application Packaging project for Prod_Store
     - name: Build using the publish profile
       run: dotnet publish /p:Configuration=Release /p:PublishProfile=FolderProfile
+
+    # Copy license file to the publish directory
+    - name: Copy license file to the publish directory
+      run: Copy-Item -Path $env:License_Path -Destination $env:App_Project_Directory\$env:App_Publish_Directory\
 
     # Create archive
     - name: Create archive
