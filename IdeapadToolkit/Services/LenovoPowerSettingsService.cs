@@ -32,9 +32,12 @@ namespace IdeapadToolkit.Services
         [DllImport("PowerBattery.dll", EntryPoint = "?GetChargingMode@CChargingMode@PowerBattery@@QEBAHXZ", CallingConvention = CallingConvention.Cdecl, SetLastError = true)]
         internal static extern int GetChargingMode(ref CChargingMode var1);
 
-
         [DllImport("PowerBattery.dll", EntryPoint = "?SetChargingMode@CChargingMode@PowerBattery@@QEBAHH@Z", CallingConvention = CallingConvention.Cdecl, SetLastError = true)]
         internal static extern int SetChargingMode(ref CChargingMode var1, int var2);
+
+        [DllImport("PowerBattery.dll", EntryPoint = "?SetChargingMode@CChargingMode@PowerBattery@@QEBAHH_N@Z", CallingConvention = CallingConvention.Cdecl, SetLastError = true)]
+        // I don't know what the newly added boolean does, but it doesn't seem to matter
+        internal static extern int SetChargingModeFallBack(ref CChargingMode var1, int var2, bool var3);
 
         [DllImport("PowerBattery.dll", EntryPoint = "??0CUSBCharger@PowerBattery@@QEAA@XZ", CallingConvention = CallingConvention.Cdecl, SetLastError = true)]
         internal static extern CUSBCharger CUSBCharger(ref CUSBCharger var1);
@@ -90,7 +93,14 @@ namespace IdeapadToolkit.Services
         {
             CChargingMode instance = new();
             instance = CChargingMode(ref instance);
-            _ = SetChargingMode(ref instance, (int)chargingMode);
+            try
+            {
+                _ = SetChargingMode(ref instance, (int)chargingMode);
+            }
+            catch (SystemException)
+            {
+                _ = SetChargingModeFallBack(ref instance, (int)chargingMode, false);
+            }
         }
 
         public bool IsAlwaysOnUsbEnabled()
