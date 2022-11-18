@@ -22,14 +22,27 @@ To test, try changing the settings and verify the changes in Lenovo Vantage
 
 - [Lenovo Intelligent Thermal Solution Driver](https://www.google.com/search?q=lenovo+<YOUR+MODEL>+intelligent+thermal+solution+driver+download)
 
+- Visual C++ 2015 Runtime
+  - This comes packed with most Windows software, so you most likely already have this.
+  - If not, install from here: [X64](https://aka.ms/vs/17/release/vc_redist.x64.exe) [X86](https://aka.ms/vs/17/release/vc_redist.x86.exe)
+
 - PowerBattery.dll
   - This dll needs to be placed in the same directory as the executable
   
 ### How to get PowerBattery.dll
- 1. Install Lenovo Vantage from the Microsoft Store
- 2. Copy it from C:\ProgramData\Lenovo\Vantage\Addins\IdeaNotebookAddin\ to the Ideapad Toolkit directory
- 3. Lenovo Vantage can now be uninstalled
- 
+- Method A
+  1. Install Lenovo Vantage from the Microsoft Store
+  2. Copy it from C:\ProgramData\Lenovo\Vantage\Addins\IdeaNotebookAddin\ to the Ideapad Toolkit directory
+  3. Lenovo Vantage can now be uninstalled
+- Method B (Without Microsoft Store)
+  1.  Go to https://store.rg-adguard.net/
+  2.  Enter the link to Lenovo Vantage (https://apps.microsoft.com/store/detail/lenovo-vantage/9WZDNCRFJ4MV)
+  3.  Download the newest version in the **.msixbundle** format (The file should be called "something LevovoCompanion something **.msixbundle**)
+  4.  Open the .msixbundle file using 7Zip or similar software
+  5.  Inside 7Zip, navigate to LenovoVantagePackage\[Version\]x64.msix/DeployAssistant/ImController/Plugins\[Version\].cab/plugins.7z/Normal/IdeaNotebookPlugin/x64
+  6.  PowerBattery.dll should be in there
+
+
  ## Third party licenses
  [Hardcodet.NotifyIcon.Wpf](https://github.com/hardcodet/wpf-notifyicon/blob/develop/LICENSE)
  
@@ -39,3 +52,5 @@ To test, try changing the settings and verify the changes in Lenovo Vantage
  
  [.NET Community Toolkit](https://github.com/CommunityToolkit/dotnet/blob/main/License.md)
  
+ [Serilog](https://github.com/serilog/serilog/blob/dev/LICENSE)
+
