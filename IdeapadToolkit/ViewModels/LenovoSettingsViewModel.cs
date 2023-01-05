@@ -1,4 +1,4 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using IdeapadToolkit.Models;
 using IdeapadToolkit.Services;
@@ -86,7 +86,7 @@ namespace IdeapadToolkit.ViewModels
                     bool res = false;
                     try
                     {
-                        _uEFISettingsService.GetFlipToBootStatus();
+                        res = _uEFISettingsService.GetFlipToBootStatus();
                     }
                     catch (Exception ex)
                     {
