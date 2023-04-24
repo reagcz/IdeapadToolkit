@@ -2,11 +2,11 @@
 
 **Ideapad Toolkit is a utility that allows you to adjust your Ideapad's power settings without installing Lenovo Vantage**
 
-![image](https://user-images.githubusercontent.com/62750643/193948650-76596fe5-fab3-44aa-b656-fe15a2d93f46.png)
+![Screenshot 2023-04-24 174110](https://user-images.githubusercontent.com/62750643/234048210-32a98b8a-7e24-4ba3-8990-a25ecdd8a2f9.png)
 
-**Power profiles can be quickly adjusted from the tray icon**
+**Power and charging profiles can be quickly adjusted from the tray icon**
 
-![image](https://user-images.githubusercontent.com/62750643/193938407-4f96a444-4c29-44be-90e0-f6c4e182dbce.png)
+![Screenshot 2023-04-24 174631](https://user-images.githubusercontent.com/62750643/234049214-1324dc57-b3fd-4f8f-9fb0-8a419e2e9d32.png)
 
 **After running, the app windows can be accessed by double clicking the tray icon**
 ## Tested laptops
