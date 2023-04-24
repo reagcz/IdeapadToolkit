@@ -23,6 +23,34 @@
             <FrameworkElement.ContextMenu>
                 <ContextMenu Loaded="ContextMenu_Loaded">
                     <ui:RadioMenuItem
+                        Command="{Binding SetChargingModeCommand}"
+                        GroupName="ChargingMode"
+                        Header="Conservation"
+                        IsChecked="{Binding IsConservationModeEnabled}">
+                        <ui:RadioMenuItem.CommandParameter>
+                            <system:Int32>1</system:Int32>
+                        </ui:RadioMenuItem.CommandParameter>
+                    </ui:RadioMenuItem>
+                    <ui:RadioMenuItem
+                        Command="{Binding SetChargingModeCommand}"
+                        GroupName="ChargingMode"
+                        Header="Normal"
+                        IsChecked="{Binding IsNormalModeEnabled}">
+                        <ui:RadioMenuItem.CommandParameter>
+                            <system:Int32>0</system:Int32>
+                        </ui:RadioMenuItem.CommandParameter>
+                    </ui:RadioMenuItem>
+                    <ui:RadioMenuItem
+                        Command="{Binding SetChargingModeCommand}"
+                        GroupName="ChargingMode"
+                        Header="Rapid"
+                        IsChecked="{Binding IsRapidModeEnabled}">
+                        <ui:RadioMenuItem.CommandParameter>
+                            <system:Int32>2</system:Int32>
+                        </ui:RadioMenuItem.CommandParameter>
+                    </ui:RadioMenuItem>
+                    <Separator />
+                    <ui:RadioMenuItem
                         Command="{Binding SetPlanCommand}"
                         GroupName="PowerPlan"
                         Header="Battery Saving"
