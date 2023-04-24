@@ -27,11 +27,29 @@
 
   <ItemGroup>
     <None Remove="Resources\admin.png" />
+    <None Remove="Resources\intelligent_conservation.ico" />
+    <None Remove="Resources\intelligent_normal.ico" />
+    <None Remove="Resources\intelligent_quick.ico" />
+    <None Remove="Resources\performance_conservation.ico" />
+    <None Remove="Resources\performance_normal.ico" />
+    <None Remove="Resources\performance_quick.ico" />
+    <None Remove="Resources\saving_conservation.ico" />
+    <None Remove="Resources\saving_normal.ico" />
+    <None Remove="Resources\saving_quick.ico" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Resources\admin.png" />
     <Resource Include="Resources\icon.ico" />
+    <Resource Include="Resources\intelligent_conservation.ico" />
+    <Resource Include="Resources\intelligent_normal.ico" />
+    <Resource Include="Resources\intelligent_quick.ico" />
+    <Resource Include="Resources\performance_conservation.ico" />
+    <Resource Include="Resources\performance_normal.ico" />
+    <Resource Include="Resources\performance_quick.ico" />
+    <Resource Include="Resources\saving_conservation.ico" />
+    <Resource Include="Resources\saving_normal.ico" />
+    <Resource Include="Resources\saving_quick.ico" />
   </ItemGroup>
 
   <ItemGroup>

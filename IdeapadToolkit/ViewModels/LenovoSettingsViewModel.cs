@@ -1,4 +1,4 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using IdeapadToolkit.Models;
 using IdeapadToolkit.Services;
@@ -29,10 +29,10 @@ namespace IdeapadToolkit.ViewModels
         private readonly ILogger _logger;
 
         [ObservableProperty]
-        [NotifyPropertyChangedFor(nameof(IsEfficientChecked), nameof(IsIntelligentCoolingChecked), nameof(IsExtremePerformanceChecked))]
+        [NotifyPropertyChangedFor(nameof(IsEfficientChecked), nameof(IsIntelligentCoolingChecked), nameof(IsExtremePerformanceChecked), nameof(IconSource))]
         private PowerPlan _plan;
         [ObservableProperty]
-        [NotifyPropertyChangedFor(nameof(IsConservationModeEnabled), nameof(IsNormalModeEnabled), nameof(IsRapidModeEnabled))]
+        [NotifyPropertyChangedFor(nameof(IsConservationModeEnabled), nameof(IsNormalModeEnabled), nameof(IsRapidModeEnabled), nameof(IconSource))]
         private ChargingMode _mode;
         public void Refresh()
         {
@@ -86,7 +86,7 @@ namespace IdeapadToolkit.ViewModels
                     bool res = false;
                     try
                     {
-                        _uEFISettingsService.GetFlipToBootStatus();
+                        res = _uEFISettingsService.GetFlipToBootStatus();
                     }
                     catch (Exception ex)
                     {
@@ -203,6 +203,27 @@ namespace IdeapadToolkit.ViewModels
         }
 
         #endregion
+
+        public Uri IconSource
+        {
+            get
+            {
+                string path = (_plan, _mode) switch
+                {
+                    (PowerPlan.IntelligentCooling, ChargingMode.Normal) => "/Resources/intelligent_normal.ico",
+                    (PowerPlan.IntelligentCooling, ChargingMode.Conservation) => "/Resources/intelligent_conservation.ico",
+                    (PowerPlan.IntelligentCooling, ChargingMode.Rapid) => "/Resources/intelligent_quick.ico",
+                    (PowerPlan.EfficiencyMode, ChargingMode.Normal) => "/Resources/saving_normal.ico",
+                    (PowerPlan.EfficiencyMode, ChargingMode.Conservation) => "/Resources/saving_conservation.ico",
+                    (PowerPlan.EfficiencyMode, ChargingMode.Rapid) => "/Resources/saving_quick.ico",
+                    (PowerPlan.ExtremePerformance, ChargingMode.Normal) => "/Resources/performance_normal.ico",
+                    (PowerPlan.ExtremePerformance, ChargingMode.Conservation) => "/Resources/performance_conservation.ico",
+                    (PowerPlan.ExtremePerformance, ChargingMode.Rapid) => "/Resources/performance_quick.ico",
+                    _ => "/Resources/intelligent_normal.ico"
+                };
+                return new Uri(path, UriKind.Relative);
+            }
+        }
         public bool IsAdministrator => _administratorPermissionService.IsAdministrator;
 
         [RelayCommand]
