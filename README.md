@@ -1,21 +1,21 @@
 # Ideapad Toolkit
 
-**Ideapad Toolkit is a utility that allows you adjust the power setting from Lenovo Vantage, without having to use the slow official app**
+**Ideapad Toolkit is a utility that allows you to adjust your Ideapad's power settings without installing Lenovo Vantage**
 
 ![image](https://user-images.githubusercontent.com/62750643/193948650-76596fe5-fab3-44aa-b656-fe15a2d93f46.png)
-
 
 **Power profiles can be quickly adjusted from the tray icon**
 
 ![image](https://user-images.githubusercontent.com/62750643/193938407-4f96a444-4c29-44be-90e0-f6c4e182dbce.png)
 
 **After running, the app windows can be accessed by double clicking the tray icon**
-## Supported laptops
-- Lenovo Flex 5 14ALC05 (Windows 11)
+## Tested laptops
+- Ideapad Flex 5 14ALC05 (Windows 11)
+- Ideapad 5 Pro 16ACH6 - 82L5 (Windows 10 22H2)
 
-If your model is similar enough, chances are it will work.
+If you find your model is compatible and not on the list, please sumbit an issue
 
-To test, try changing the settings and verify the changes in Lenovo Vantage
+To test, try changing the settings and verify if the settings change accordingly in Lenovo Vantage or the UEFI
 
 ## Prerequisites
 - [.NET 6 Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-6.0.9-windows-x64-installer)
