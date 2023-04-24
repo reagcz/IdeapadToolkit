@@ -16,7 +16,7 @@
     <Grid>
         <tb:TaskbarIcon
             x:Name="TrayIcon"
-            IconSource="\Resources\icon.ico"
+            IconSource="{Binding IconSource}"
             ToolTipText="Ideapad Toolkit"
             TrayMouseDoubleClick="TrayIcon_TrayMouseDoubleClick"
             Visibility="Collapsed">
