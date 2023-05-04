@@ -11,7 +11,8 @@
 **After running, the app windows can be accessed by double clicking the tray icon**
 ## Tested laptops
 - Ideapad Flex 5 14ALC05 (Windows 11)
-- Ideapad 5 Pro 16ACH6 - 82L5 (Windows 10 22H2)
+- Ideapad 5 Pro 16ACH6 - 82L5 (Windows 10 22H2) - credits [@KatayR](https://github.com/KatayR)
+- IdeaPad 5 Pro 16ARH7 - credits [@minbcrafter](https://github.com/minbcrafter)
 
 If you find your model is compatible and not on the list, please sumbit an issue
 
