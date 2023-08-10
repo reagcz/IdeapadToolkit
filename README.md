@@ -9,10 +9,14 @@
 ![Screenshot 2023-04-24 174631](https://user-images.githubusercontent.com/62750643/234049214-1324dc57-b3fd-4f8f-9fb0-8a419e2e9d32.png)
 
 **After running, the app windows can be accessed by double clicking the tray icon**
-## Tested laptops
-- Ideapad Flex 5 14ALC05/15ALC05 (Windows 11)
-- Ideapad 5 Pro 16ACH6 - 82L5 (Windows 10 22H2) - credits [@KatayR](https://github.com/KatayR)
-- IdeaPad 5 Pro 16ARH7 - credits [@minbcrafter](https://github.com/minbcrafter)
+## Supported laptops
+| Laptop | Power Mode | Rapid charging | Conservation mode | Always on USB |
+| --- | --- | --- | --- | --- |
+| Ideapad Flex 5 14ALC05/15ALC05 (Windows 11) | ✅ | ✅ | ✅ | ✅ |
+| Ideapad 5 Pro 16ACH6 82L5 (Windows 10 22H2) - credits [@KatayR](https://github.com/KatayR) | ✅ | ✅ | ✅ | ✅ |
+| IdeaPad 5 Pro 16ARH7 - credits [@minbcrafter](https://github.com/minbcrafter) | ✅ | ✅ | ✅ | ✅ |
+| IdeaPad S145-14IIL 81W6 - credits [@Antonomasia3](https://github.com/Antonomasia3) | ✅ | ✅ | ❌ | ❌ |
+| IdeaPad Z50-70 - credits [@Ozzypozzy](https://github.com/Ozzypozzy) | ❌ | ❌ | ✅ | ❌ |
 
 If you find your model is compatible and not on the list, please sumbit an issue
 
