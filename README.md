@@ -15,7 +15,7 @@
 | Ideapad Flex 5 14ALC05/15ALC05 (Windows 11) | ✅ | ✅ | ✅ | ✅ |
 | Ideapad 5 Pro 16ACH6 82L5 (Windows 10 22H2) - credits [@KatayR](https://github.com/KatayR) | ✅ | ✅ | ✅ | ✅ |
 | IdeaPad 5 Pro 16ARH7 - credits [@minbcrafter](https://github.com/minbcrafter) | ✅ | ✅ | ✅ | ✅ |
-| IdeaPad S145-14IIL 81W6 - credits [@Antonomasia3](https://github.com/Antonomasia3) | ✅ | ✅ | ❌ | ❌ |
+| IdeaPad S145-14IIL 81W6 - credits [@Antonomasia3](https://github.com/Antonomasia3) | ✅ | ❌ | ✅ | ❌ |
 | IdeaPad Z50-70 - credits [@Ozzypozzy](https://github.com/Ozzypozzy) | ❌ | ❌ | ✅ | ❌ |
 
 If you find your model is compatible and not on the list, please sumbit an issue
