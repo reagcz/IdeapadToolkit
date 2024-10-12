@@ -21,6 +21,7 @@ namespace IdeapadToolkit.ViewModels
             _uEFISettingsService = uEFISettingsService;
             _administratorPermissionService = administratorPermissionService;
             _logger = logger;
+            Refresh();
         }
 
         private readonly ILenovoPowerSettingsService _lenovoPowerSettingsService;
