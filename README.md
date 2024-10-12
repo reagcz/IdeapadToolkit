@@ -33,7 +33,7 @@ If you find your model is compatible and not on the list, please sumbit an issue
 To test, try changing the settings and verify if the settings change accordingly in Lenovo Vantage or the UEFI
 
 ## Prerequisites
-- [.NET 6 Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-6.0.9-windows-x64-installer)
+- [.NET 8 Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-8.0.10-windows-x64-installer)
 
 - [Lenovo Intelligent Thermal Solution Driver](https://www.google.com/search?q=lenovo+<YOUR+MODEL>+intelligent+thermal+solution+driver+download)
 

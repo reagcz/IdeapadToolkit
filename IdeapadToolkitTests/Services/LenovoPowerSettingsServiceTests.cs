@@ -1,12 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using IdeapadToolkit.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace IdeapadToolkit.Services.Tests
+﻿namespace IdeapadToolkit.Services.Tests
 {
     [TestClass()]
     public class LenovoPowerSettingsServiceTests
