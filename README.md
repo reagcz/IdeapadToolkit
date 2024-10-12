@@ -15,8 +15,18 @@
 | Ideapad Flex 5 14ALC05/15ALC05 (Windows 11) | ✅ | ✅ | ✅ | ✅ |
 | Ideapad 5 Pro 16ACH6 82L5 (Windows 10 22H2) - credits [@KatayR](https://github.com/KatayR) | ✅ | ✅ | ✅ | ✅ |
 | IdeaPad 5 Pro 16ARH7 - credits [@minbcrafter](https://github.com/minbcrafter) | ✅ | ✅ | ✅ | ✅ |
-| IdeaPad S145-14IIL 81W6 - credits [@Antonomasia3](https://github.com/Antonomasia3) | ✅ | ❌ | ✅ | ❌ |
+| IdeaPad S540-14IML 81INF - thanks [@minbcrafter](https://github.com/minbcrafter) | ✅ | ✅ | ✅ | ✅ |
+| IdeaPad Pro 5 14APH8 - thanks [@Kondix10](https://github.com/Kondix10) | ✅ | ✅ | ✅ | ✅ |
+| IdeaPad Pro 5 14APH9 - thanks [@Che0063](https://github.com/Che0063) | ✅ | ✅ | ✅ | ✅ |
+| V14 G4 AMN - thanks [@blckbearx](https://github.com/blckbearx) | ✅ | ✅ | ✅ | ✅ |
+| IdeaPad S340-15API - thanks [@ajayfaul](https://github.com/ajayfaul) | ✅ | ✅ | ✅ | ✅ |
+| IdeaPad Slim 7 15ITL05 - thanks [@Vitamoon](https://github.com/Vitamoon) | ✅ | ✅ | ✅ | ✅ |
+| IdeaPad Pro 5 16APH8 - thanks [@mooms06](https://github.com/mooms06) | ✅ | ✅ | ✅ | ✅ |
+| ThinkBook 16 G6 IRL - thanks [@PrizeWhipser](https://github.com/PrizeWhipser) | ✅ | ✅ | ✅ | ✅ |
+| Yoga C640-13IML - thanks [@Clancione](https://github.com/Clancione) | ✅ | ✅ | ✅ | ✅ |
+| IdeaPad S145-14IWL - thanks [@Matee001](https://github.com/Matee001) |  ❌ | ❌ | ✅ | ❌ |
 | IdeaPad Z50-70 - credits [@Ozzypozzy](https://github.com/Ozzypozzy) | ❌ | ❌ | ✅ | ❌ |
+| IdeaPad S145-14IIL 81W6 - credits [@Antonomasia3](https://github.com/Antonomasia3) | ✅ | ❌ | ✅ | ❌ |
 
 If you find your model is compatible and not on the list, please sumbit an issue
 
