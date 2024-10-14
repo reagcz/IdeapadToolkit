@@ -138,6 +138,9 @@
   <data name="FLIP_TO_BOOT" xml:space="preserve">
     <value>Zapnout při otevření</value>
   </data>
+  <data name="HOME" xml:space="preserve">
+    <value>Domů</value>
+  </data>
   <data name="INTELLIGENT_COOLING" xml:space="preserve">
     <value>Chytré chlazení</value>
   </data>

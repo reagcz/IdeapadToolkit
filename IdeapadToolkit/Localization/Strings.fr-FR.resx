@@ -117,4 +117,49 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ALWAYS_ON_USB" xml:space="preserve">
+    <value>USB toujours activé</value>
+  </data>
+  <data name="ALWAYS_ON_USB_BATTERY" xml:space="preserve">
+    <value>USB toujours activé sur batterie</value>
+  </data>
+  <data name="BATTERY_CHARGING_MODE" xml:space="preserve">
+    <value>Mode de charge de la batterie</value>
+  </data>
+  <data name="BATTERY_SAVING" xml:space="preserve">
+    <value>Économie de batterie</value>
+  </data>
+  <data name="CONSERVATION" xml:space="preserve">
+    <value>Conservation</value>
+  </data>
+  <data name="EXTREME_PERFORMANCE" xml:space="preserve">
+    <value>Performances maximales</value>
+  </data>
+  <data name="FLIP_TO_BOOT" xml:space="preserve">
+    <value>Ouvrir le capot pour démarrer</value>
+  </data>
+  <data name="HOME" xml:space="preserve">
+    <value>Maison</value>
+  </data>
+  <data name="INTELLIGENT_COOLING" xml:space="preserve">
+    <value>Refroidissement intelligent</value>
+  </data>
+  <data name="LANGUAGE" xml:space="preserve">
+    <value>Langue</value>
+  </data>
+  <data name="NORMAL" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="OTHER" xml:space="preserve">
+    <value>Autres</value>
+  </data>
+  <data name="POWER_PROFILE" xml:space="preserve">
+    <value>Profil de performance</value>
+  </data>
+  <data name="RAPID" xml:space="preserve">
+    <value>Rapide</value>
+  </data>
+  <data name="RUN_ON_STARTUP" xml:space="preserve">
+    <value>Lancer au démarrage</value>
+  </data>
 </root>

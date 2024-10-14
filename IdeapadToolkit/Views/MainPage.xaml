@@ -85,7 +85,7 @@
                     FontSize="24"
                     Text="{x:Static loc:Strings.OTHER}" />
                 <ui:SimpleStackPanel Spacing="16">
-                    <StackPanel Orientation="Horizontal">
+                    <ui:SimpleStackPanel Orientation="Horizontal" Spacing="10">
                         <ui:ToggleSwitch
                             Width="auto"
                             ui:ControlHelper.Header="{x:Static loc:Strings.FLIP_TO_BOOT}"
@@ -105,7 +105,7 @@
                                     Source="/Resources/admin.png" />
                             </Button.Content>
                         </Button>
-                    </StackPanel>
+                    </ui:SimpleStackPanel>
                     <ui:ToggleSwitch ui:ControlHelper.Header="{x:Static loc:Strings.ALWAYS_ON_USB}" IsOn="{Binding IsAlwaysOnUsbEnabled}" />
                     <ui:ToggleSwitch
                         ui:ControlHelper.Header="{x:Static loc:Strings.ALWAYS_ON_USB_BATTERY}"

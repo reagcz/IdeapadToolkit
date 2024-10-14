@@ -124,6 +124,15 @@ namespace IdeapadToolkit.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Home.
+        /// </summary>
+        public static string HOME {
+            get {
+                return ResourceManager.GetString("HOME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Intelligent Cooling.
         /// </summary>
         public static string INTELLIGENT_COOLING {

@@ -138,6 +138,9 @@
   <data name="FLIP_TO_BOOT" xml:space="preserve">
     <value>Flip to Boot</value>
   </data>
+  <data name="HOME" xml:space="preserve">
+    <value>Home</value>
+  </data>
   <data name="INTELLIGENT_COOLING" xml:space="preserve">
     <value>Intelligent Cooling</value>
   </data>
