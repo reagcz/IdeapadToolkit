@@ -11,14 +11,15 @@
     x:Name="_mainwindow"
     Title="Ideapad Toolkit"
     Width="400"
-    Height="450"
+    Height="670"
     MinWidth="400"
     ui:TitleBar.ButtonStyle="{DynamicResource TitleBarButtonStyle}"
     ui:TitleBar.ExtendViewIntoTitleBar="True"
     ui:TitleBar.IsBackButtonVisible="False"
     ui:TitleBar.Style="{DynamicResource TitleBarStyle}"
     ui:WindowHelper.UseModernWindowStyle="True"
-    Background="{DynamicResource SystemControlBackgroundChromeBlackMediumBrush}"
+    Background="#0b0b0b"
+    SizeToContent="Width"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <FrameworkElement.Resources>
