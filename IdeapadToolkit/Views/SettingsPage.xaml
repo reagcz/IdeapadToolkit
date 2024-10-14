@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:loc="clr-namespace:IdeapadToolkit.Localization"
     xmlns:local="clr-namespace:IdeapadToolkit.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.modernwpf.com/2019"
@@ -10,10 +11,20 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-
     <Grid Margin="16">
         <ui:SimpleStackPanel>
-            <ui:ToggleSwitch ui:ControlHelper.Header="Run On Startup" IsOn="{Binding IsRunOnStartupEnabled}" />
+            <ui:ToggleSwitch ui:ControlHelper.Header="{x:Static loc:Strings.RUN_ON_STARTUP}" IsOn="{Binding IsRunOnStartupEnabled}" />
+            <ComboBox
+                ui:ControlHelper.Header="{x:Static loc:Strings.LANGUAGE}"
+                ItemsSource="{Binding SupportedLanguages}"
+                SelectedItem="{Binding SelectedLocale}"
+                Style="{StaticResource DefaultComboBoxStyle}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
         </ui:SimpleStackPanel>
     </Grid>
 </ui:Page>
