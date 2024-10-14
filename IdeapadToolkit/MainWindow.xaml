@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:loc="clr-namespace:IdeapadToolkit.Localization"
     xmlns:local="clr-namespace:IdeapadToolkit"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:mwpf="http://schemas.modernwpf.com/2019"
@@ -11,14 +12,14 @@
     x:Name="_mainwindow"
     Title="Ideapad Toolkit"
     Width="400"
-    Height="450"
+    Height="670"
     MinWidth="400"
     ui:TitleBar.ButtonStyle="{DynamicResource TitleBarButtonStyle}"
     ui:TitleBar.ExtendViewIntoTitleBar="True"
     ui:TitleBar.IsBackButtonVisible="False"
     ui:TitleBar.Style="{DynamicResource TitleBarStyle}"
     ui:WindowHelper.UseModernWindowStyle="True"
-    Background="{DynamicResource SystemControlBackgroundChromeBlackMediumBrush}"
+    Background="#0b0b0b"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <FrameworkElement.Resources>
@@ -61,7 +62,7 @@
                 ItemInvoked="NavigationView_ItemInvoked"
                 PaneDisplayMode="Top">
                 <mwpf:NavigationView.MenuItems>
-                    <mwpf:NavigationViewItem Content="Home" Tag="{x:Type views:MainPage}">
+                    <mwpf:NavigationViewItem Content="{x:Static loc:Strings.HOME}" Tag="{x:Type views:MainPage}">
                         <mwpf:NavigationViewItem.Icon>
                             <mwpf:SymbolIcon Symbol="Home" />
                         </mwpf:NavigationViewItem.Icon>

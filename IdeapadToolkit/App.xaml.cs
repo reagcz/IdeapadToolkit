@@ -9,6 +9,8 @@ using System.Linq;
 using Serilog;
 using System.Windows;
 using Serilog.Core;
+using System.Globalization;
+using System.Threading;
 
 namespace IdeapadToolkit
 {
@@ -29,10 +31,10 @@ namespace IdeapadToolkit
                 .MinimumLevel.ControlledBy(logLevel)
                 .WriteTo.File("log.txt", rollingInterval: RollingInterval.Day, retainedFileCountLimit: 7, levelSwitch: logLevel);
             var logger = _logger = loggerConfig.CreateLogger();
-            
+
             container.RegisterInstance(logger);
             container.RegisterInstance(logLevel);
-            
+
             container.RegisterSingleton<INavigationService, NavigationService>();
             container.RegisterSingleton<ILenovoPowerSettingsService, LenovoPowerSettingsService>();
             container.RegisterSingleton<IUEFISettingsService, UEFISettingsService>();
@@ -75,7 +77,7 @@ namespace IdeapadToolkit
             {
                 ShowMainWindow(null, null);
             }
-            
+
             var iconview = _container.GetInstance<TrayIconView>();
             iconview.MakeVisible();
             iconview.TrayIconClicked += ShowMainWindow;
@@ -90,6 +92,19 @@ namespace IdeapadToolkit
         {
             if (App.Current.MainWindow == null)
             {
+                var culture = Settings.Default.Language;
+                if (!String.IsNullOrWhiteSpace(culture))
+                {
+                    var cultureInfo = CultureInfo.GetCultureInfo(culture);
+                    if (cultureInfo != null)
+                    {
+                        Application.Current.Dispatcher.Invoke(() =>
+                        {
+                            Thread.CurrentThread.CurrentUICulture = cultureInfo;
+                        });
+                    }
+                }
+
                 App.Current.MainWindow = _container.GetInstance<MainWindow>();
             }
             App.Current.MainWindow.Show();

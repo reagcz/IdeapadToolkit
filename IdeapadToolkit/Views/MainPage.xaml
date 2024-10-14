@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:loc="clr-namespace:IdeapadToolkit.Localization"
     xmlns:local="clr-namespace:IdeapadToolkit.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:system="clr-namespace:System;assembly=mscorlib"
@@ -13,18 +14,17 @@
     Background="Transparent"
     Loaded="Page_Loaded"
     mc:Ignorable="d">
-
     <Grid Margin="16">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <ScrollViewer Height="auto" CanContentScroll="True">
             <ui:SimpleStackPanel VerticalAlignment="Stretch" Spacing="16">
-                <TextBlock FontSize="24" Text="Power Profile" />
+                <TextBlock FontSize="24" Text="{x:Static loc:Strings.POWER_PROFILE}" />
                 <ui:SimpleStackPanel>
                     <RadioButton
                         Command="{Binding SetPlanCommand}"
-                        Content="Battery Saving"
+                        Content="{x:Static loc:Strings.BATTERY_SAVING}"
                         GroupName="PowerMode"
                         IsChecked="{Binding IsEfficientChecked}">
                         <RadioButton.CommandParameter>
@@ -33,7 +33,7 @@
                     </RadioButton>
                     <RadioButton
                         Command="{Binding SetPlanCommand}"
-                        Content="Intelligent Cooling"
+                        Content="{x:Static loc:Strings.INTELLIGENT_COOLING}"
                         GroupName="PowerMode"
                         IsChecked="{Binding IsIntelligentCoolingChecked}">
                         <RadioButton.CommandParameter>
@@ -42,7 +42,7 @@
                     </RadioButton>
                     <RadioButton
                         Command="{Binding SetPlanCommand}"
-                        Content="Extreme Performance"
+                        Content="{x:Static loc:Strings.EXTREME_PERFORMANCE}"
                         GroupName="PowerMode"
                         IsChecked="{Binding IsExtremePerformanceChecked}">
                         <RadioButton.CommandParameter>
@@ -50,11 +50,11 @@
                         </RadioButton.CommandParameter>
                     </RadioButton>
                 </ui:SimpleStackPanel>
-                <TextBlock FontSize="24" Text="Battery Charging Mode" />
+                <TextBlock FontSize="24" Text="{x:Static loc:Strings.BATTERY_CHARGING_MODE}" />
                 <ui:SimpleStackPanel>
                     <RadioButton
                         Command="{Binding SetChargingModeCommand}"
-                        Content="Conservation"
+                        Content="{x:Static loc:Strings.CONSERVATION}"
                         GroupName="ChargingMode"
                         IsChecked="{Binding IsConservationModeEnabled}">
                         <RadioButton.CommandParameter>
@@ -63,7 +63,7 @@
                     </RadioButton>
                     <RadioButton
                         Command="{Binding SetChargingModeCommand}"
-                        Content="Normal"
+                        Content="{x:Static loc:Strings.NORMAL}"
                         GroupName="ChargingMode"
                         IsChecked="{Binding IsNormalModeEnabled}">
                         <RadioButton.CommandParameter>
@@ -72,7 +72,7 @@
                     </RadioButton>
                     <RadioButton
                         Command="{Binding SetChargingModeCommand}"
-                        Content="Rapid"
+                        Content="{x:Static loc:Strings.RAPID}"
                         GroupName="ChargingMode"
                         IsChecked="{Binding IsRapidModeEnabled}">
                         <RadioButton.CommandParameter>
@@ -83,12 +83,12 @@
                 <TextBlock
                     Margin="0,0,0,0"
                     FontSize="24"
-                    Text="Other" />
+                    Text="{x:Static loc:Strings.OTHER}" />
                 <ui:SimpleStackPanel Spacing="16">
-                    <StackPanel Orientation="Horizontal">
+                    <ui:SimpleStackPanel Orientation="Horizontal" Spacing="10">
                         <ui:ToggleSwitch
-                            Width="100"
-                            ui:ControlHelper.Header="Flip to Boot"
+                            Width="auto"
+                            ui:ControlHelper.Header="{x:Static loc:Strings.FLIP_TO_BOOT}"
                             IsEnabled="{Binding IsAdministrator}"
                             IsOn="{Binding IsFlipToBootEnabled}" />
                         <Button
@@ -105,11 +105,10 @@
                                     Source="/Resources/admin.png" />
                             </Button.Content>
                         </Button>
-                    </StackPanel>
-
-                    <ui:ToggleSwitch ui:ControlHelper.Header="Always on USB" IsOn="{Binding IsAlwaysOnUsbEnabled}" />
+                    </ui:SimpleStackPanel>
+                    <ui:ToggleSwitch ui:ControlHelper.Header="{x:Static loc:Strings.ALWAYS_ON_USB}" IsOn="{Binding IsAlwaysOnUsbEnabled}" />
                     <ui:ToggleSwitch
-                        ui:ControlHelper.Header="Always on USB on battery"
+                        ui:ControlHelper.Header="{x:Static loc:Strings.ALWAYS_ON_USB_BATTERY}"
                         IsEnabled="{Binding IsAlwaysOnUsbEnabled}"
                         IsOn="{Binding IsAlwaysOnUsbBatteryEnabled}" />
                 </ui:SimpleStackPanel>
