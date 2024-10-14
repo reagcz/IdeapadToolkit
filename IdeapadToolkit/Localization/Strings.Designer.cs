@@ -61,6 +61,15 @@ namespace IdeapadToolkit.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The app is already running.
+        /// </summary>
+        public static string ALREADY_RUNNING {
+            get {
+                return ResourceManager.GetString("ALREADY_RUNNING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Always on USB.
         /// </summary>
         public static string ALWAYS_ON_USB {
@@ -102,6 +111,15 @@ namespace IdeapadToolkit.Localization {
         public static string CONSERVATION {
             get {
                 return ResourceManager.GetString("CONSERVATION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PowerBattery.dll has to be present in the same folder as IdeapadToolkit.exe.
+        /// </summary>
+        public static string DLL_MISSING_ERROR {
+            get {
+                return ResourceManager.GetString("DLL_MISSING_ERROR", resourceCulture);
             }
         }
         

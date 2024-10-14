@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ALREADY_RUNNING" xml:space="preserve">
+    <value>Aplikace je již spuštěná</value>
+  </data>
   <data name="ALWAYS_ON_USB" xml:space="preserve">
     <value>USB vždy zapnuté</value>
   </data>
@@ -131,6 +134,9 @@
   </data>
   <data name="CONSERVATION" xml:space="preserve">
     <value>Šetrný</value>
+  </data>
+  <data name="DLL_MISSING_ERROR" xml:space="preserve">
+    <value>Soubor PowerBattery.dll musí být přítomen ve stejné složce jako IdeapadToolkit.exe</value>
   </data>
   <data name="EXTREME_PERFORMANCE" xml:space="preserve">
     <value>Extrémní výkon</value>

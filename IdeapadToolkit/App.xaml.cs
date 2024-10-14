@@ -11,6 +11,7 @@ using System.Windows;
 using Serilog.Core;
 using System.Globalization;
 using System.Threading;
+using IdeapadToolkit.Localization;
 
 namespace IdeapadToolkit
 {
@@ -57,9 +58,10 @@ namespace IdeapadToolkit
             ConfigureServices(container);
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             bool exists = Process.GetProcessesByName(Path.GetFileNameWithoutExtension(Environment.ProcessPath)).Length > 1;
+            TrySetCulture();
             if (exists && !e.Args.Contains("ignoreRunning"))
             {
-                MessageBox.Show("Already running!", "", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+                MessageBox.Show(Strings.ALREADY_RUNNING, "", MessageBoxButton.OK, MessageBoxImage.Asterisk);
                 Application.Current.Shutdown();
                 return;
             }
@@ -70,7 +72,7 @@ namespace IdeapadToolkit
 
             if (!File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "PowerBattery.dll")))
             {
-                MessageBox.Show("PowerBattery.dll has to be present in the same folder as IdeapadToolkit.exe", "", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+                MessageBox.Show(Strings.DLL_MISSING_ERROR, "", MessageBoxButton.OK, MessageBoxImage.Asterisk);
                 Application.Current.Shutdown();
             }
             if (!e.Args.Contains("nogui"))
@@ -92,6 +94,16 @@ namespace IdeapadToolkit
         {
             if (App.Current.MainWindow == null)
             {
+                TrySetCulture();
+                App.Current.MainWindow = _container.GetInstance<MainWindow>();
+            }
+            App.Current.MainWindow.Show();
+        }
+
+        private void TrySetCulture()
+        {
+            try
+            {
                 var culture = Settings.Default.Language;
                 if (!String.IsNullOrWhiteSpace(culture))
                 {
@@ -104,10 +116,10 @@ namespace IdeapadToolkit
                         });
                     }
                 }
-
-                App.Current.MainWindow = _container.GetInstance<MainWindow>();
             }
-            App.Current.MainWindow.Show();
+            catch (Exception ex)
+            {
+            }
         }
 
         private void MenuItemExit_Click(object sender, RoutedEventArgs e)
