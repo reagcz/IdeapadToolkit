@@ -29,7 +29,6 @@
 | IdeaPad S145-14IWL - thanks [@Matee001](https://github.com/Matee001) |  ❌ | ❌ | ✅ | ❌ |
 | IdeaPad Z50-70 - credits [@Ozzypozzy](https://github.com/Ozzypozzy) | ❌ | ❌ | ✅ | ❌ |
 
-
 If you find your model is compatible and not on the list, please sumbit an issue
 
 To test, try changing the settings and verify if the settings change accordingly in Lenovo Vantage or the UEFI
@@ -59,15 +58,20 @@ To test, try changing the settings and verify if the settings change accordingly
   5.  Inside 7Zip, navigate to LenovoVantagePackage\[Version\]x64.msix/DeployAssistant/ImController/Plugins\[Version\].cab/plugins.7z/Normal/IdeaNotebookPlugin/x64
   6.  PowerBattery.dll should be in there
 
+## Languages
+- ⚠️ Restart the app to apply the changes
+- English
+- Czech
+- French (by [@mooms06](https://github.com/mooms06))
 
- ## Third party licenses
- [Hardcodet.NotifyIcon.Wpf](https://github.com/hardcodet/wpf-notifyicon/blob/develop/LICENSE)
+## Third party licenses
+[Hardcodet.NotifyIcon.Wpf](https://github.com/hardcodet/wpf-notifyicon/blob/develop/LICENSE)
  
- [ModernWpf](https://github.com/Kinnara/ModernWpf/blob/master/LICENSE)
+[ModernWpf](https://github.com/Kinnara/ModernWpf/blob/master/LICENSE)
  
- [SimpleInjector](https://github.com/simpleinjector/SimpleInjector/blob/master/LICENSE)
+[SimpleInjector](https://github.com/simpleinjector/SimpleInjector/blob/master/LICENSE)
  
- [.NET Community Toolkit](https://github.com/CommunityToolkit/dotnet/blob/main/License.md)
+[.NET Community Toolkit](https://github.com/CommunityToolkit/dotnet/blob/main/License.md)
  
- [Serilog](https://github.com/serilog/serilog/blob/dev/LICENSE)
+[Serilog](https://github.com/serilog/serilog/blob/dev/LICENSE)
 
