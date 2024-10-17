@@ -63,10 +63,11 @@ To test, try changing the settings and verify if the settings change accordingly
 - English
 - Czech
 - French (by [@mooms06](https://github.com/mooms06))
+- Chinese (Simplified) (by [@Flicker372](https://github.com/Flicker372))
 
 ## Third party licenses
 [Hardcodet.NotifyIcon.Wpf](https://github.com/hardcodet/wpf-notifyicon/blob/develop/LICENSE)
- 
+
 [ModernWpf](https://github.com/Kinnara/ModernWpf/blob/master/LICENSE)
  
 [SimpleInjector](https://github.com/simpleinjector/SimpleInjector/blob/master/LICENSE)
