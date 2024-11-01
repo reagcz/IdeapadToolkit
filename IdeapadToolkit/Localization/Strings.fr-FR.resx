@@ -168,4 +168,7 @@
   <data name="RUN_ON_STARTUP" xml:space="preserve">
     <value>Lancer au démarrage</value>
   </data>
+  <data name="KEEP_IN_TRAY" xml:space="preserve">
+    <value>Laisser en cours d'exécution en arrière-plan</value>
+  </data>
 </root>

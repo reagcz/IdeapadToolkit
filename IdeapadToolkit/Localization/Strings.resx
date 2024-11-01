@@ -168,4 +168,7 @@
   <data name="RUN_ON_STARTUP" xml:space="preserve">
     <value>Run On Startup</value>
   </data>
+  <data name="KEEP_IN_TRAY" xml:space="preserve">
+    <value>Keep running in the background</value>
+  </data>
 </root>

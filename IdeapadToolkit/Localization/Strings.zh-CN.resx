@@ -168,4 +168,7 @@
   <data name="RUN_ON_STARTUP" xml:space="preserve">
     <value>开机时自动启动</value>
   </data>
+  <data name="KEEP_IN_TRAY" xml:space="preserve">
+    <value>在后台运行</value>
+  </data>
 </root>

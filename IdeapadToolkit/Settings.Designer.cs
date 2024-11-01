@@ -34,5 +34,17 @@ namespace IdeapadToolkit {
                 this["Language"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool KeepInTray {
+            get {
+                return ((bool)(this["KeepInTray"]));
+            }
+            set {
+                this["KeepInTray"] = value;
+            }
+        }
     }
 }

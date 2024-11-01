@@ -168,4 +168,7 @@
   <data name="RUN_ON_STARTUP" xml:space="preserve">
     <value>Spustit při startu</value>
   </data>
+  <data name="KEEP_IN_TRAY" xml:space="preserve">
+    <value>Ponechat spuštěné na pozadí</value>
+  </data>
 </root>

@@ -20,6 +20,7 @@
     ui:TitleBar.Style="{DynamicResource TitleBarStyle}"
     ui:WindowHelper.UseModernWindowStyle="True"
     Background="#0b0b0b"
+    Closing="_mainwindow_Closing"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <FrameworkElement.Resources>

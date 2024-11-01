@@ -14,6 +14,7 @@
     <Grid Margin="16">
         <ui:SimpleStackPanel>
             <ui:ToggleSwitch ui:ControlHelper.Header="{x:Static loc:Strings.RUN_ON_STARTUP}" IsOn="{Binding IsRunOnStartupEnabled}" />
+            <ui:ToggleSwitch ui:ControlHelper.Header="{x:Static loc:Strings.KEEP_IN_TRAY}" IsOn="{Binding KeepInTray}" />
             <ComboBox
                 ui:ControlHelper.Header="{x:Static loc:Strings.LANGUAGE}"
                 ItemsSource="{Binding SupportedLanguages}"

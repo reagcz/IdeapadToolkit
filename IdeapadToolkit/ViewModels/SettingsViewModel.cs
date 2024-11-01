@@ -73,5 +73,15 @@ namespace IdeapadToolkit.ViewModels
                 Settings.Default.Save();
             }
         }
+
+        public bool KeepInTray
+        {
+            get => Settings.Default.KeepInTray;
+            set
+            {
+                Settings.Default.KeepInTray = value;
+                Settings.Default.Save();
+            }
+        }
     }
 }

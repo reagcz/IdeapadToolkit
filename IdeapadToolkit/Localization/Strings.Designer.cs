@@ -160,6 +160,15 @@ namespace IdeapadToolkit.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Keep running in the background.
+        /// </summary>
+        public static string KEEP_IN_TRAY {
+            get {
+                return ResourceManager.GetString("KEEP_IN_TRAY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Language.
         /// </summary>
         public static string LANGUAGE {

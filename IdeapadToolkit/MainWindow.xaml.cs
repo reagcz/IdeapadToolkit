@@ -35,5 +35,13 @@ namespace IdeapadToolkit
                 }
             }
         }
+
+        private void _mainwindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (!Settings.Default.KeepInTray)
+            {
+                Application.Current.Shutdown();
+            }
+        }
     }
 }
