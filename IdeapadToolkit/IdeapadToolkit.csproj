@@ -38,6 +38,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\IdeapadToolkit.Core\IdeapadToolkit.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Resources\admin.png" />
     <Resource Include="Resources\icon.ico" />
     <Resource Include="Resources\intelligent_conservation.ico" />

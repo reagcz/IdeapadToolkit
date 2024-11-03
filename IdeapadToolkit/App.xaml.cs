@@ -12,6 +12,7 @@ using Serilog.Core;
 using System.Globalization;
 using System.Threading;
 using IdeapadToolkit.Localization;
+using IdeapadToolkit.Core.Services;
 
 namespace IdeapadToolkit
 {

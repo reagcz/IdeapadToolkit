@@ -1,4 +1,7 @@
-﻿namespace IdeapadToolkit.Services.Tests
+﻿using IdeapadToolkit.Core.Models;
+using IdeapadToolkit.Core.Services;
+
+namespace IdeapadToolkitTests.Services
 {
     [TestClass()]
     public class LenovoPowerSettingsServiceTests
@@ -23,7 +26,6 @@
             var res = _service.IsAlwaysOnUsbBatteryEnabled();
             Assert.IsTrue(res);
         }
-
 
         [TestMethod()]
         public void AlwaysOnUsbRandomTest()
@@ -52,14 +54,14 @@
         [TestMethod()]
         public void SetChargingModeRandomTest()
         {
-            _service.SetChargingMode(Models.ChargingMode.Normal);
-            Assert.IsTrue(_service.GetChargingMode() == Models.ChargingMode.Normal);
-            _service.SetChargingMode(Models.ChargingMode.Conservation);
-            Assert.IsTrue(_service.GetChargingMode() == Models.ChargingMode.Conservation);
-            _service.SetChargingMode(Models.ChargingMode.Rapid);
-            Assert.IsTrue(_service.GetChargingMode() == Models.ChargingMode.Rapid);
-            _service.SetChargingMode(Models.ChargingMode.Normal);
-            Assert.IsTrue(_service.GetChargingMode() == Models.ChargingMode.Normal);
+            _service.SetChargingMode(ChargingMode.Normal);
+            Assert.IsTrue(_service.GetChargingMode() == ChargingMode.Normal);
+            _service.SetChargingMode(ChargingMode.Conservation);
+            Assert.IsTrue(_service.GetChargingMode() == ChargingMode.Conservation);
+            _service.SetChargingMode(ChargingMode.Rapid);
+            Assert.IsTrue(_service.GetChargingMode() == ChargingMode.Rapid);
+            _service.SetChargingMode(ChargingMode.Normal);
+            Assert.IsTrue(_service.GetChargingMode() == ChargingMode.Normal);
         }
     }
 }
