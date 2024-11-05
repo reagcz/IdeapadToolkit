@@ -106,6 +106,7 @@ public partial class App : Application
     {
         TrySetCulture();
         var window = Composition.Resolve<MainWindow>();
+        MainWindow = window;
         window.Show();
     }
 
@@ -135,6 +136,8 @@ public partial class App : Application
     {
         Environment.Exit(0);
     }
+
+    internal static MainWindow MainWindow = null!;
 
     internal static Composition Composition = null!;
 }

@@ -6,7 +6,8 @@
     xmlns:loc="using:IdeapadToolkit.WinUI3.Localization"
     xmlns:local="using:IdeapadToolkit.WinUI3.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    xmlns:wuiex="using:WinUIEx"
+    Background="Transparent"
     Loaded="Page_Loaded"
     mc:Ignorable="d">
     <Grid Margin="16">
@@ -17,33 +18,35 @@
             <StackPanel Spacing="16">
                 <TextBlock FontSize="24" Text="{x:Bind loc:Strings.POWER_PROFILE}" />
                 <StackPanel>
-                    <RadioButton
-                        Command="{x:Bind ViewModel.SetPlanCommand}"
-                        Content="{x:Bind loc:Strings.BATTERY_SAVING}"
-                        GroupName="PowerMode"
-                        IsChecked="{x:Bind ViewModel.IsEfficientChecked}">
-                        <RadioButton.CommandParameter>
-                            <x:Int32>2</x:Int32>
-                        </RadioButton.CommandParameter>
-                    </RadioButton>
-                    <RadioButton
-                        Command="{x:Bind ViewModel.SetPlanCommand}"
-                        Content="{x:Bind loc:Strings.INTELLIGENT_COOLING}"
-                        GroupName="PowerMode"
-                        IsChecked="{x:Bind ViewModel.IsIntelligentCoolingChecked}">
-                        <RadioButton.CommandParameter>
-                            <x:Int32>1</x:Int32>
-                        </RadioButton.CommandParameter>
-                    </RadioButton>
-                    <RadioButton
-                        Command="{x:Bind ViewModel.SetPlanCommand}"
-                        Content="{x:Bind loc:Strings.EXTREME_PERFORMANCE}"
-                        GroupName="PowerMode"
-                        IsChecked="{x:Bind ViewModel.IsExtremePerformanceChecked}">
-                        <RadioButton.CommandParameter>
-                            <x:Int32>3</x:Int32>
-                        </RadioButton.CommandParameter>
-                    </RadioButton>
+                    <RadioButtons SelectedItem="{x:Bind ViewModel.Plan}">
+                        <RadioButton
+                            Command="{x:Bind ViewModel.SetPlanCommand}"
+                            Content="{x:Bind loc:Strings.BATTERY_SAVING}"
+                            GroupName="PowerMode"
+                            IsChecked="{x:Bind ViewModel.IsEfficientChecked, Mode=OneWay}">
+                            <RadioButton.CommandParameter>
+                                <x:Int32>2</x:Int32>
+                            </RadioButton.CommandParameter>
+                        </RadioButton>
+                        <RadioButton
+                            Command="{x:Bind ViewModel.SetPlanCommand}"
+                            Content="{x:Bind loc:Strings.INTELLIGENT_COOLING}"
+                            GroupName="PowerMode"
+                            IsChecked="{x:Bind ViewModel.IsIntelligentCoolingChecked, Mode=OneWay}">
+                            <RadioButton.CommandParameter>
+                                <x:Int32>1</x:Int32>
+                            </RadioButton.CommandParameter>
+                        </RadioButton>
+                        <RadioButton
+                            Command="{x:Bind ViewModel.SetPlanCommand}"
+                            Content="{x:Bind loc:Strings.EXTREME_PERFORMANCE}"
+                            GroupName="PowerMode"
+                            IsChecked="{x:Bind ViewModel.IsExtremePerformanceChecked, Mode=OneWay}">
+                            <RadioButton.CommandParameter>
+                                <x:Int32>3</x:Int32>
+                            </RadioButton.CommandParameter>
+                        </RadioButton>
+                    </RadioButtons>
                 </StackPanel>
                 <TextBlock FontSize="24" Text="{x:Bind loc:Strings.BATTERY_CHARGING_MODE}" />
                 <StackPanel>
@@ -51,7 +54,7 @@
                         Command="{x:Bind ViewModel.SetChargingModeCommand}"
                         Content="{x:Bind loc:Strings.CONSERVATION}"
                         GroupName="ChargingMode"
-                        IsChecked="{x:Bind ViewModel.IsConservationModeEnabled}">
+                        IsChecked="{x:Bind ViewModel.IsConservationModeEnabled, Mode=OneWay}">
                         <RadioButton.CommandParameter>
                             <x:Int32>1</x:Int32>
                         </RadioButton.CommandParameter>
@@ -60,7 +63,7 @@
                         Command="{x:Bind ViewModel.SetChargingModeCommand}"
                         Content="{x:Bind loc:Strings.NORMAL}"
                         GroupName="ChargingMode"
-                        IsChecked="{x:Bind ViewModel.IsNormalModeEnabled}">
+                        IsChecked="{x:Bind ViewModel.IsNormalModeEnabled, Mode=OneWay}">
                         <RadioButton.CommandParameter>
                             <x:Int32>0</x:Int32>
                         </RadioButton.CommandParameter>
@@ -69,7 +72,7 @@
                         Command="{x:Bind ViewModel.SetChargingModeCommand}"
                         Content="{x:Bind loc:Strings.RAPID}"
                         GroupName="ChargingMode"
-                        IsChecked="{x:Bind ViewModel.IsRapidModeEnabled}">
+                        IsChecked="{x:Bind ViewModel.IsRapidModeEnabled, Mode=OneWay}">
                         <RadioButton.CommandParameter>
                             <x:Int32>2</x:Int32>
                         </RadioButton.CommandParameter>
@@ -91,7 +94,7 @@
                             <Image
                                 Width="24"
                                 Height="24"
-                                Source="/Resources/admin.png" />
+                                Source="ms-appx:///Resources/admin.png" />
                         </Button>
                     </StackPanel>
                     <ToggleSwitch Header="{x:Bind loc:Strings.ALWAYS_ON_USB}" IsOn="{x:Bind ViewModel.IsAlwaysOnUsbEnabled, Mode=TwoWay}" />

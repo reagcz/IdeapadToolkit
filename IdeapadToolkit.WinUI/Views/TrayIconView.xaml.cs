@@ -1,10 +1,12 @@
 using CommunityToolkit.Mvvm.Input;
+using IdeapadToolkit.Core.Models;
 using IdeapadToolkit.WinUI3.Localization;
 using IdeapadToolkit.WinUI3.ViewModels;
+using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using System;
-using System.Windows.Input;
+using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Media.Imaging;
 
 namespace IdeapadToolkit.WinUI3.Views;
 
@@ -16,7 +18,10 @@ public sealed partial class TrayIconView : Page
         ViewModel = App.Composition.Resolve<MainPageViewModel>();
     }
 
-    internal MainPageViewModel ViewModel { get; }
+    internal MainPageViewModel ViewModel
+    {
+        get;
+    }
 
     public event EventHandler TrayIconClicked;
 
@@ -31,7 +36,13 @@ public sealed partial class TrayIconView : Page
         TrayIcon.ForceCreate();
         TrayIcon.Visibility = Visibility.Visible;
         TrayIcon.LeftClickCommand = TrayIconClickedCommand;
+        ViewModel.PropertyChanged += ViewModel_PropertyChanged;
         RefreshBindings();
+    }
+
+    private void ViewModel_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
+    {
+        TrayIcon.IconSource = new BitmapImage(new Uri(ViewModel.IconSource));
     }
 
     private void MenuItemExit_Click(object sender, RoutedEventArgs e)
@@ -43,47 +54,39 @@ public sealed partial class TrayIconView : Page
     {
         ViewModel.Refresh();
 
-        RadioConservation.IsChecked = ViewModel.IsConservationModeEnabled;
         RadioConservation.Text = Strings.CONSERVATION;
         RadioConservation.Command = ViewModel.SetChargingModeCommand;
-        RadioConservation.CommandParameter = 0;
+        RadioConservation.CommandParameter = (int)ChargingMode.Conservation;
+        RadioConservation.Background = ViewModel.IsConservationModeEnabled ? new SolidColorBrush(Colors.DarkGreen) : new SolidColorBrush(Colors.Transparent);
 
-        RadioNormal.IsChecked = ViewModel.IsNormalModeEnabled;
         RadioNormal.Text = Strings.NORMAL;
         RadioNormal.Command = ViewModel.SetChargingModeCommand;
-        RadioNormal.CommandParameter = 1;
+        RadioNormal.CommandParameter = (int)ChargingMode.Normal;
+        RadioNormal.Background = ViewModel.IsNormalModeEnabled ? new SolidColorBrush(Colors.DarkBlue) : new SolidColorBrush(Colors.Transparent);
 
-        RadioRapid.IsChecked = ViewModel.IsRapidModeEnabled;
         RadioRapid.Text = Strings.RAPID;
         RadioRapid.Command = ViewModel.SetChargingModeCommand;
-        RadioRapid.CommandParameter = 2;
+        RadioRapid.CommandParameter = (int)ChargingMode.Rapid;
+        RadioRapid.Background = ViewModel.IsRapidModeEnabled ? new SolidColorBrush(Colors.DarkRed) : new SolidColorBrush(Colors.Transparent);
 
-        RadioBatterySaving.IsChecked = ViewModel.IsEfficientChecked;
         RadioBatterySaving.Text = Strings.BATTERY_SAVING;
         RadioBatterySaving.Command = ViewModel.SetPlanCommand;
-        RadioBatterySaving.CommandParameter = 2;
+        RadioBatterySaving.CommandParameter = (int)PowerPlan.EfficiencyMode;
+        RadioBatterySaving.Background = ViewModel.IsEfficientChecked ? new SolidColorBrush(Colors.DarkGreen) : new SolidColorBrush(Colors.Transparent);
 
-        RadioIntelligent.IsChecked = ViewModel.IsIntelligentCoolingChecked;
         RadioIntelligent.Text = Strings.INTELLIGENT_COOLING;
         RadioIntelligent.Command = ViewModel.SetPlanCommand;
-        RadioIntelligent.CommandParameter = 1;
+        RadioIntelligent.CommandParameter = (int)PowerPlan.IntelligentCooling;
+        RadioIntelligent.Background = ViewModel.IsIntelligentCoolingChecked ? new SolidColorBrush(Colors.DarkBlue) : new SolidColorBrush(Colors.Transparent);
 
-        RadioExtreme.IsChecked = ViewModel.IsExtremePerformanceChecked;
         RadioExtreme.Text = Strings.EXTREME_PERFORMANCE;
         RadioExtreme.Command = ViewModel.SetPlanCommand;
-        RadioExtreme.CommandParameter = 3;
-
-        TrayIcon.UpdateLayout();
+        RadioExtreme.CommandParameter = (int)PowerPlan.ExtremePerformance;
+        RadioExtreme.Background = ViewModel.IsExtremePerformanceChecked ? new SolidColorBrush(Colors.DarkRed) : new SolidColorBrush(Colors.Transparent);
     }
 
     private void RadioConservation_Loaded(object sender, RoutedEventArgs e)
     {
-        RadioConservation.IsChecked = ViewModel.IsConservationModeEnabled;
-        RadioNormal.IsChecked = ViewModel.IsNormalModeEnabled;
-        RadioRapid.IsChecked = ViewModel.IsRapidModeEnabled;
-        RadioBatterySaving.IsChecked = ViewModel.IsEfficientChecked;
-        RadioIntelligent.IsChecked = ViewModel.IsIntelligentCoolingChecked;
-        RadioExtreme.IsChecked = ViewModel.IsExtremePerformanceChecked;
-        TrayIcon.UpdateLayout();
+        RefreshBindings();
     }
 }

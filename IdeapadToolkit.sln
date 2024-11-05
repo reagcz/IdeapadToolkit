@@ -11,6 +11,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdeapadToolkit.Core", "Idea
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdeapadToolkit.WinUI3", "IdeapadToolkit.WinUI\IdeapadToolkit.WinUI3.csproj", "{556130B7-65E1-4B15-944A-998F9D9407F4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{ED86D2E1-346D-46FE-87BB-1D090D7D372E}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,7 +45,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {88081EEF-3938-46A8-B49A-9AD2C92E4E1A}
 		RESX_SortFileContentOnSave = True
+		SolutionGuid = {88081EEF-3938-46A8-B49A-9AD2C92E4E1A}
 	EndGlobalSection
 EndGlobal

@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using IdeapadToolkit.Core.Models;
 using IdeapadToolkit.Core.Services;
 using Microsoft.UI.Xaml.Controls;
 using Serilog;
+using System.Threading.Tasks;
 
 namespace IdeapadToolkit.WinUI3.ViewModels;
 internal partial class MainPageViewModel : ObservableObject
@@ -196,16 +192,16 @@ internal partial class MainPageViewModel : ObservableObject
         {
             string path = (_plan, _mode) switch
             {
-                (PowerPlan.IntelligentCooling, ChargingMode.Normal) => "/Resources/intelligent_normal.ico",
-                (PowerPlan.IntelligentCooling, ChargingMode.Conservation) => "/Resources/intelligent_conservation.ico",
-                (PowerPlan.IntelligentCooling, ChargingMode.Rapid) => "/Resources/intelligent_quick.ico",
-                (PowerPlan.EfficiencyMode, ChargingMode.Normal) => "/Resources/saving_normal.ico",
-                (PowerPlan.EfficiencyMode, ChargingMode.Conservation) => "/Resources/saving_conservation.ico",
-                (PowerPlan.EfficiencyMode, ChargingMode.Rapid) => "/Resources/saving_quick.ico",
-                (PowerPlan.ExtremePerformance, ChargingMode.Normal) => "/Resources/performance_normal.ico",
-                (PowerPlan.ExtremePerformance, ChargingMode.Conservation) => "/Resources/performance_conservation.ico",
-                (PowerPlan.ExtremePerformance, ChargingMode.Rapid) => "/Resources/performance_quick.ico",
-                _ => "/Resources/intelligent_normal.ico"
+                (PowerPlan.IntelligentCooling, ChargingMode.Normal) => "ms-appx:///Resources/intelligent_normal.ico",
+                (PowerPlan.IntelligentCooling, ChargingMode.Conservation) => "ms-appx:///Resources/intelligent_conservation.ico",
+                (PowerPlan.IntelligentCooling, ChargingMode.Rapid) => "ms-appx:///Resources/intelligent_quick.ico",
+                (PowerPlan.EfficiencyMode, ChargingMode.Normal) => "ms-appx:///Resources/saving_normal.ico",
+                (PowerPlan.EfficiencyMode, ChargingMode.Conservation) => "ms-appx:///Resources/saving_conservation.ico",
+                (PowerPlan.EfficiencyMode, ChargingMode.Rapid) => "ms-appx:///Resources/saving_quick.ico",
+                (PowerPlan.ExtremePerformance, ChargingMode.Normal) => "ms-appx:///Resources/performance_normal.ico",
+                (PowerPlan.ExtremePerformance, ChargingMode.Conservation) => "ms-appx:///Resources/performance_conservation.ico",
+                (PowerPlan.ExtremePerformance, ChargingMode.Rapid) => "ms-appx:///Resources/performance_quick.ico",
+                _ => "ms-appx:///Resources/intelligent_normal.ico"
             };
             return path;
         }
@@ -235,7 +231,8 @@ internal partial class MainPageViewModel : ObservableObject
             Title = "Permission required",
             Content = "The program will now restart as administrator",
             PrimaryButtonText = "Ok",
-            SecondaryButtonText = "Cancel"
+            SecondaryButtonText = "Cancel",
+            XamlRoot = App.MainWindow.Content.XamlRoot
         }.ShowAsync();
 
         if (res == ContentDialogResult.Primary)

@@ -12,27 +12,19 @@
         <notify:TaskbarIcon
             x:Name="TrayIcon"
             ContextMenuMode="SecondWindow"
+            IconSource="{x:Bind ViewModel.IconSource}"
             LeftClickCommand="{x:Bind TrayIconClickedCommand}"
             ToolTipText="Ideapad Toolkit"
             Visibility="Collapsed">
-            <notify:TaskbarIcon.IconSource>
-                <notify:GeneratedIconSource
-                    Background="AliceBlue"
-                    FontFamily="Segoe UI Emoji"
-                    FontSize="38"
-                    FontWeight="Bold"
-                    Foreground="Red"
-                    Text="❤️" />
-            </notify:TaskbarIcon.IconSource>
             <notify:TaskbarIcon.ContextFlyout>
                 <MenuFlyout>
-                    <RadioMenuFlyoutItem x:Name="RadioConservation" Loaded="RadioConservation_Loaded" />
-                    <RadioMenuFlyoutItem x:Name="RadioNormal" />
-                    <RadioMenuFlyoutItem x:Name="RadioRapid" />
+                    <MenuFlyoutItem x:Name="RadioConservation" Loaded="RadioConservation_Loaded" />
+                    <MenuFlyoutItem x:Name="RadioNormal" />
+                    <MenuFlyoutItem x:Name="RadioRapid" />
                     <MenuFlyoutSeparator />
-                    <RadioMenuFlyoutItem x:Name="RadioBatterySaving" />
-                    <RadioMenuFlyoutItem x:Name="RadioIntelligent" />
-                    <RadioMenuFlyoutItem x:Name="RadioExtreme" />
+                    <MenuFlyoutItem x:Name="RadioBatterySaving" />
+                    <MenuFlyoutItem x:Name="RadioIntelligent" />
+                    <MenuFlyoutItem x:Name="RadioExtreme" />
                     <MenuFlyoutSeparator />
                     <MenuFlyoutItem Click="MenuItemExit_Click" Text="Exit" />
                 </MenuFlyout>

@@ -8,11 +8,12 @@
     xmlns:local="using:IdeapadToolkit.WinUI3"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:views="using:IdeapadToolkit.WinUI3.Views"
+    xmlns:wuiex="using:WinUIEx"
     Title="IdeapadToolkit.WinUI"
     Closed="Window_Closed"
     mc:Ignorable="d">
     <Window.SystemBackdrop>
-        <MicaBackdrop />
+        <wuiex:TransparentTintBackdrop />
     </Window.SystemBackdrop>
     <Grid Background="Transparent">
         <NavigationView

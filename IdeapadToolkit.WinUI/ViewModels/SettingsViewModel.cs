@@ -92,7 +92,8 @@ internal partial class SettingsViewModel : ObservableObject
                 {
                     Title = "Error",
                     Content = ex.Message,
-                    CloseButtonText = "Ok"
+                    CloseButtonText = "Ok",
+                    XamlRoot = App.MainWindow.Content.XamlRoot
                 }.ShowAsync();
             }
         }
