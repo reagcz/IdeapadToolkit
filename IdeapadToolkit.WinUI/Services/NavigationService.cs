@@ -23,11 +23,13 @@ internal class NavigationService : INavigationService
     public void Navigate<TElement>(object? args, NavigationTransitionInfo? navigationTransitionInfo = null) where TElement : UIElement
     {
         NavFrame.Navigate(typeof(TElement), args, navigationTransitionInfo);
+        NavFrame.BackStack.Clear();
     }
 
     public void Navigate(Type page, object? args, NavigationTransitionInfo? navigationTransitionInfo = null)
     {
         NavFrame.Navigate(page, args, navigationTransitionInfo);
+        NavFrame.BackStack.Clear();
     }
 
 }

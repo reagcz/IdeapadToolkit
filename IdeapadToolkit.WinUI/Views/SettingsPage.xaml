@@ -8,7 +8,7 @@
     xmlns:local="using:IdeapadToolkit.WinUI3.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewmodels="using:IdeapadToolkit.WinUI3.ViewModels"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Background="Transparent"
     mc:Ignorable="d">
 
     <Grid Margin="16">

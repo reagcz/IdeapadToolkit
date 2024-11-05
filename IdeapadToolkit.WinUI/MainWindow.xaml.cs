@@ -7,12 +7,13 @@ using Microsoft.UI.Xaml.Media.Animation;
 using WinUIEx;
 
 namespace IdeapadToolkit.WinUI3;
-public sealed partial class MainWindow : Window
+public sealed partial class MainWindow : WinUIEx.WindowEx
 {
     private readonly INavigationService _navigationService;
     internal MainWindow(INavigationService navigationService)
     {
         this.InitializeComponent();
+        this.ExtendsContentIntoTitleBar = true;
         NavigationView.SelectedItem = NavigationView.MenuItems[0];
         _navigationService = navigationService;
         _navigationService.NavFrame = RootFrame;
@@ -43,6 +44,10 @@ public sealed partial class MainWindow : Window
         if (!Settings.Instance.KeepInTray)
         {
             Environment.Exit(0);
+        }
+        else
+        {
+            App.MainWindow = null;
         }
     }
 }

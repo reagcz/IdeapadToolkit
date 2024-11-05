@@ -104,10 +104,17 @@ public partial class App : Application
 
     private void ShowMainWindow(object sender, EventArgs args)
     {
-        TrySetCulture();
-        var window = Composition.Resolve<MainWindow>();
-        MainWindow = window;
-        window.Show();
+        if (MainWindow == null)
+        {
+            TrySetCulture();
+            var window = Composition.Resolve<MainWindow>();
+            MainWindow = window;
+            window.Activate();
+        }
+        else
+        {
+            MainWindow.Activate();
+        }
     }
 
     private void TrySetCulture()
@@ -137,7 +144,7 @@ public partial class App : Application
         Environment.Exit(0);
     }
 
-    internal static MainWindow MainWindow = null!;
+    internal static MainWindow? MainWindow = null!;
 
     internal static Composition Composition = null!;
 }
