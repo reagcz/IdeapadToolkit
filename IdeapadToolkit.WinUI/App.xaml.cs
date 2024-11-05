@@ -12,6 +12,7 @@ using Serilog;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Threading;
 using WinUIEx;
 
@@ -66,11 +67,14 @@ public partial class App : Application
     {
         ConfigureServices();
         Composition = new Composition();
+
+        var arguments = Environment.GetCommandLineArgs();
+
         AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
 
         bool exists = Process.GetProcessesByName(Path.GetFileNameWithoutExtension(Environment.ProcessPath)).Length > 1;
         TrySetCulture();
-        if (exists && !args.Arguments.Contains("ignoreRunning"))
+        if (exists && (arguments?.Any(x => x.Contains("ignoreRunning")) != true))
         {
             Win32.MessageBox(IntPtr.Zero, Strings.ALREADY_RUNNING, "", Win32.MB_OK | Win32.MB_ICONASTERISK);
             Environment.Exit(1);
@@ -87,7 +91,7 @@ public partial class App : Application
             Environment.Exit(1);
             return;
         }
-        if (!args.Arguments.Contains("nogui"))
+        if (arguments?.Any(x => x.Contains("nogui")) != true)
         {
             ShowMainWindow(null, null);
         }
