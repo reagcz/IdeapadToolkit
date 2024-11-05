@@ -1,7 +1,7 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using IdeapadToolkit.Models;
-using IdeapadToolkit.Services;
+using IdeapadToolkit.Core.Models;
+using IdeapadToolkit.Core.Services;
 using ModernWpf.Controls;
 using Serilog;
 using System;
@@ -271,6 +271,5 @@ namespace IdeapadToolkit.ViewModels
             }
         }
     }
-
 
 }

@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "IdeapadToolkit.WinUI (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "IdeapadToolkit.WinUI (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

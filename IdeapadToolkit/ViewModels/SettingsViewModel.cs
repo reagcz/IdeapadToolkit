@@ -1,11 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using IdeapadToolkit.Services;
+using IdeapadToolkit.Core.Services;
 using ModernWpf.Controls;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Windows;
 

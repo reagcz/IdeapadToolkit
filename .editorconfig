@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# Default severity for analyzer diagnostics with category 'CommunityToolkit.Mvvm.SourceGenerators.ObservablePropertyGenerator'
+dotnet_analyzer_diagnostic.category-CommunityToolkit.Mvvm.SourceGenerators.ObservablePropertyGenerator.severity = none

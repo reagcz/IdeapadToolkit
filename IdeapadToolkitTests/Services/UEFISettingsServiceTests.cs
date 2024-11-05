@@ -1,7 +1,8 @@
-﻿using Moq;
+﻿using IdeapadToolkit.Core.Services;
+using Moq;
 using Serilog;
 
-namespace IdeapadToolkit.Services.Tests
+namespace IdeapadToolkitTests.Services
 {
     [TestClass()]
     public class UEFISettingsServiceTests
@@ -21,7 +22,6 @@ namespace IdeapadToolkit.Services.Tests
             Assert.IsNotNull(res);
         }
 
-
         [TestMethod()]
         public void FlipToBootSettingTest()
         {
@@ -35,8 +35,6 @@ namespace IdeapadToolkit.Services.Tests
             _service.SetFlipToBootStatus(false);
             Assert.IsFalse(_service.GetFlipToBootStatus());
             _service.SetFlipToBootStatus(Convert.ToBoolean(original));
-
         }
-
     }
 }

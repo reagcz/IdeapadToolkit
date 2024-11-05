@@ -1,0 +1,34 @@
+<Page
+    x:Class="IdeapadToolkit.WinUI3.Views.TrayIconView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:loc="using:IdeapadToolkit.WinUI3.Localization"
+    xmlns:local="using:IdeapadToolkit.WinUI3.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:notify="using:H.NotifyIcon"
+    mc:Ignorable="d">
+    <Grid>
+        <notify:TaskbarIcon
+            x:Name="TrayIcon"
+            ContextMenuMode="SecondWindow"
+            IconSource="{x:Bind ViewModel.IconSource}"
+            LeftClickCommand="{x:Bind TrayIconClickedCommand}"
+            ToolTipText="Ideapad Toolkit"
+            Visibility="Collapsed">
+            <notify:TaskbarIcon.ContextFlyout>
+                <MenuFlyout>
+                    <MenuFlyoutItem x:Name="RadioConservation" Loaded="RadioConservation_Loaded" />
+                    <MenuFlyoutItem x:Name="RadioNormal" />
+                    <MenuFlyoutItem x:Name="RadioRapid" />
+                    <MenuFlyoutSeparator />
+                    <MenuFlyoutItem x:Name="RadioBatterySaving" />
+                    <MenuFlyoutItem x:Name="RadioIntelligent" />
+                    <MenuFlyoutItem x:Name="RadioExtreme" />
+                    <MenuFlyoutSeparator />
+                    <MenuFlyoutItem Click="MenuItemExit_Click" Text="Exit" />
+                </MenuFlyout>
+            </notify:TaskbarIcon.ContextFlyout>
+        </notify:TaskbarIcon>
+    </Grid>
+</Page>

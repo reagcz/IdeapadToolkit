@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page
+    x:Class="IdeapadToolkit.WinUI3.Views.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:loc="using:IdeapadToolkit.WinUI3.Localization"
+    xmlns:local="using:IdeapadToolkit.WinUI3.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="using:IdeapadToolkit.WinUI3.ViewModels"
+    Background="Transparent"
+    mc:Ignorable="d">
+
+    <Grid Margin="16">
+        <StackPanel>
+            <ToggleSwitch Header="{x:Bind loc:Strings.RUN_ON_STARTUP}" IsOn="{x:Bind ViewModel.IsRunOnStartupEnabled, Mode=TwoWay}" />
+            <ToggleSwitch Header="{x:Bind loc:Strings.KEEP_IN_TRAY}" IsOn="{x:Bind ViewModel.KeepInTray, Mode=TwoWay}" />
+            <ComboBox
+                Header="{x:Bind loc:Strings.LANGUAGE}"
+                ItemsSource="{x:Bind ViewModel.SupportedLanguages}"
+                SelectedItem="{x:Bind ViewModel.SelectedLocale, Mode=TwoWay}"
+                Style="{StaticResource DefaultComboBoxStyle}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate x:DataType="viewmodels:Locale">
+                        <TextBlock Text="{x:Bind Name}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </StackPanel>
+    </Grid>
+</Page>
