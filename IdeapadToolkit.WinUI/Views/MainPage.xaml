@@ -1,0 +1,106 @@
+<Page
+    x:Class="IdeapadToolkit.WinUI3.Views.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:loc="using:IdeapadToolkit.WinUI3.Localization"
+    xmlns:local="using:IdeapadToolkit.WinUI3.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Loaded="Page_Loaded"
+    mc:Ignorable="d">
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <ScrollViewer>
+            <StackPanel Spacing="16">
+                <TextBlock FontSize="24" Text="{x:Bind loc:Strings.POWER_PROFILE}" />
+                <StackPanel>
+                    <RadioButton
+                        Command="{x:Bind ViewModel.SetPlanCommand}"
+                        Content="{x:Bind loc:Strings.BATTERY_SAVING}"
+                        GroupName="PowerMode"
+                        IsChecked="{x:Bind ViewModel.IsEfficientChecked}">
+                        <RadioButton.CommandParameter>
+                            <x:Int32>2</x:Int32>
+                        </RadioButton.CommandParameter>
+                    </RadioButton>
+                    <RadioButton
+                        Command="{x:Bind ViewModel.SetPlanCommand}"
+                        Content="{x:Bind loc:Strings.INTELLIGENT_COOLING}"
+                        GroupName="PowerMode"
+                        IsChecked="{x:Bind ViewModel.IsIntelligentCoolingChecked}">
+                        <RadioButton.CommandParameter>
+                            <x:Int32>1</x:Int32>
+                        </RadioButton.CommandParameter>
+                    </RadioButton>
+                    <RadioButton
+                        Command="{x:Bind ViewModel.SetPlanCommand}"
+                        Content="{x:Bind loc:Strings.EXTREME_PERFORMANCE}"
+                        GroupName="PowerMode"
+                        IsChecked="{x:Bind ViewModel.IsExtremePerformanceChecked}">
+                        <RadioButton.CommandParameter>
+                            <x:Int32>3</x:Int32>
+                        </RadioButton.CommandParameter>
+                    </RadioButton>
+                </StackPanel>
+                <TextBlock FontSize="24" Text="{x:Bind loc:Strings.BATTERY_CHARGING_MODE}" />
+                <StackPanel>
+                    <RadioButton
+                        Command="{x:Bind ViewModel.SetChargingModeCommand}"
+                        Content="{x:Bind loc:Strings.CONSERVATION}"
+                        GroupName="ChargingMode"
+                        IsChecked="{x:Bind ViewModel.IsConservationModeEnabled}">
+                        <RadioButton.CommandParameter>
+                            <x:Int32>1</x:Int32>
+                        </RadioButton.CommandParameter>
+                    </RadioButton>
+                    <RadioButton
+                        Command="{x:Bind ViewModel.SetChargingModeCommand}"
+                        Content="{x:Bind loc:Strings.NORMAL}"
+                        GroupName="ChargingMode"
+                        IsChecked="{x:Bind ViewModel.IsNormalModeEnabled}">
+                        <RadioButton.CommandParameter>
+                            <x:Int32>0</x:Int32>
+                        </RadioButton.CommandParameter>
+                    </RadioButton>
+                    <RadioButton
+                        Command="{x:Bind ViewModel.SetChargingModeCommand}"
+                        Content="{x:Bind loc:Strings.RAPID}"
+                        GroupName="ChargingMode"
+                        IsChecked="{x:Bind ViewModel.IsRapidModeEnabled}">
+                        <RadioButton.CommandParameter>
+                            <x:Int32>2</x:Int32>
+                        </RadioButton.CommandParameter>
+                    </RadioButton>
+                </StackPanel>
+                <TextBlock FontSize="24" Text="{x:Bind loc:Strings.OTHER}" />
+                <StackPanel Spacing="16">
+                    <StackPanel Orientation="Horizontal" Spacing="10">
+                        <ToggleSwitch
+                            Header="{x:Bind loc:Strings.FLIP_TO_BOOT}"
+                            IsEnabled="{x:Bind ViewModel.IsAdministrator}"
+                            IsOn="{x:Bind ViewModel.IsFlipToBootEnabled, Mode=TwoWay}" />
+                        <Button
+                            Padding="4"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Command="{x:Bind ViewModel.RestartAsAdminCommand}"
+                            Visibility="{x:Bind ViewModel.IsAdministrator, Converter={StaticResource InvBoolToVisConv}}">
+                            <Image
+                                Width="24"
+                                Height="24"
+                                Source="/Resources/admin.png" />
+                        </Button>
+                    </StackPanel>
+                    <ToggleSwitch Header="{x:Bind loc:Strings.ALWAYS_ON_USB}" IsOn="{x:Bind ViewModel.IsAlwaysOnUsbEnabled, Mode=TwoWay}" />
+                    <ToggleSwitch
+                        Header="{x:Bind loc:Strings.ALWAYS_ON_USB_BATTERY}"
+                        IsEnabled="{x:Bind ViewModel.IsAlwaysOnUsbEnabled}"
+                        IsOn="{x:Bind ViewModel.IsAlwaysOnUsbBatteryEnabled, Mode=TwoWay}" />
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

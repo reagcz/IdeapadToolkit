@@ -1,0 +1,42 @@
+<Page
+    x:Class="IdeapadToolkit.WinUI3.Views.TrayIconView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:loc="using:IdeapadToolkit.WinUI3.Localization"
+    xmlns:local="using:IdeapadToolkit.WinUI3.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:notify="using:H.NotifyIcon"
+    mc:Ignorable="d">
+    <Grid>
+        <notify:TaskbarIcon
+            x:Name="TrayIcon"
+            ContextMenuMode="SecondWindow"
+            LeftClickCommand="{x:Bind TrayIconClickedCommand}"
+            ToolTipText="Ideapad Toolkit"
+            Visibility="Collapsed">
+            <notify:TaskbarIcon.IconSource>
+                <notify:GeneratedIconSource
+                    Background="AliceBlue"
+                    FontFamily="Segoe UI Emoji"
+                    FontSize="38"
+                    FontWeight="Bold"
+                    Foreground="Red"
+                    Text="❤️" />
+            </notify:TaskbarIcon.IconSource>
+            <notify:TaskbarIcon.ContextFlyout>
+                <MenuFlyout>
+                    <RadioMenuFlyoutItem x:Name="RadioConservation" Loaded="RadioConservation_Loaded" />
+                    <RadioMenuFlyoutItem x:Name="RadioNormal" />
+                    <RadioMenuFlyoutItem x:Name="RadioRapid" />
+                    <MenuFlyoutSeparator />
+                    <RadioMenuFlyoutItem x:Name="RadioBatterySaving" />
+                    <RadioMenuFlyoutItem x:Name="RadioIntelligent" />
+                    <RadioMenuFlyoutItem x:Name="RadioExtreme" />
+                    <MenuFlyoutSeparator />
+                    <MenuFlyoutItem Click="MenuItemExit_Click" Text="Exit" />
+                </MenuFlyout>
+            </notify:TaskbarIcon.ContextFlyout>
+        </notify:TaskbarIcon>
+    </Grid>
+</Page>

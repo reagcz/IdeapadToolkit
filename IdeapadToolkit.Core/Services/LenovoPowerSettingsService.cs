@@ -29,9 +29,10 @@ namespace IdeapadToolkit.Core.Services
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(System.Runtime.CompilerServices.CallConvCdecl) })]
         internal static partial int SetChargingMode(ref CChargingMode var1, int var2);
 
-        [DllImport("PowerBattery.dll", EntryPoint = "?SetChargingMode@CChargingMode@PowerBattery@@QEBAHH_N@Z", CallingConvention = CallingConvention.Cdecl, SetLastError = true)]
+        [LibraryImport("PowerBattery.dll", EntryPoint = "?SetChargingMode@CChargingMode@PowerBattery@@QEBAHH_N@Z", SetLastError = true)]
+        [UnmanagedCallConv(CallConvs = new Type[] { typeof(System.Runtime.CompilerServices.CallConvCdecl) })]
         // I don't know what the newly added boolean does, but it doesn't seem to matter
-        internal static extern int SetChargingModeFallBack(ref CChargingMode var1, int var2, bool var3);
+        internal static partial int SetChargingModeFallBack(ref CChargingMode var1, int var2, [MarshalAs(UnmanagedType.Bool)] bool var3);
 
         [LibraryImport("PowerBattery.dll", EntryPoint = "??0CUSBCharger@PowerBattery@@QEAA@XZ", SetLastError = true)]
         [UnmanagedCallConv(CallConvs = new Type[] { typeof(System.Runtime.CompilerServices.CallConvCdecl) })]

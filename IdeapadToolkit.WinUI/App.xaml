@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Application
+    x:Class="IdeapadToolkit.WinUI3.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:helpers="using:IdeapadToolkit.WinUI3.Helpers"
+    xmlns:local="using:IdeapadToolkit.WinUI3">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
+                <!--  Other merged dictionaries here  -->
+            </ResourceDictionary.MergedDictionaries>
+            <!--  Other app resources here  -->
+            <helpers:BoolToVisibilityConverter x:Key="BoolToVisConv" />
+            <helpers:InvertedBoolToVisibilityConverter x:Key="InvBoolToVisConv" />
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

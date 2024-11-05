@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdeapadToolkitTests", "Idea
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdeapadToolkit.Core", "IdeapadToolkit.Core\IdeapadToolkit.Core.csproj", "{FE5A0D0C-D865-4590-8D63-4A587D7094A9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdeapadToolkit.WinUI3", "IdeapadToolkit.WinUI\IdeapadToolkit.WinUI3.csproj", "{556130B7-65E1-4B15-944A-998F9D9407F4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,12 @@ Global
 		{FE5A0D0C-D865-4590-8D63-4A587D7094A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE5A0D0C-D865-4590-8D63-4A587D7094A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE5A0D0C-D865-4590-8D63-4A587D7094A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{556130B7-65E1-4B15-944A-998F9D9407F4}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{556130B7-65E1-4B15-944A-998F9D9407F4}.Debug|Any CPU.Build.0 = Debug|x64
+		{556130B7-65E1-4B15-944A-998F9D9407F4}.Debug|Any CPU.Deploy.0 = Debug|x64
+		{556130B7-65E1-4B15-944A-998F9D9407F4}.Release|Any CPU.ActiveCfg = Release|x64
+		{556130B7-65E1-4B15-944A-998F9D9407F4}.Release|Any CPU.Build.0 = Release|x64
+		{556130B7-65E1-4B15-944A-998F9D9407F4}.Release|Any CPU.Deploy.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
