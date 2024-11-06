@@ -26,9 +26,9 @@ namespace IdeapadToolkit.Core.Helpers
         [LibraryImport("kernel32.dll")]
         public static partial nint GetCurrentProcess();
 
-        [LibraryImport("advapi32.dll", StringMarshalling = StringMarshalling.Utf8)]
+        [LibraryImport("advapi32.dll", StringMarshalling = StringMarshalling.Utf16)]
         [return: MarshalAs(UnmanagedType.Bool)]
-        public static partial bool LookupPrivilegeValue(
+        public static partial bool LookupPrivilegeValueW(
           string lpSystemName,
           string lpName,
           ref long lpLuid);

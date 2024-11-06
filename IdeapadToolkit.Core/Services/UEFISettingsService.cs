@@ -28,7 +28,7 @@ namespace IdeapadToolkit.Core.Services
                 newState.Count = 1;
                 newState.Luid = 0L;
                 newState.Attr = enable ? 2 : 0;
-                if (!Win32.LookupPrivilegeValue(null, "SeSystemEnvironmentPrivilege", ref newState.Luid))
+                if (!Win32.LookupPrivilegeValueW(null, "SeSystemEnvironmentPrivilege", ref newState.Luid))
                 {
                     return false;
                 }
